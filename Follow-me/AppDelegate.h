@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    NSString *initial_url;
+    NSUserDefaults *standarddefs;
+    NSDictionary *json;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

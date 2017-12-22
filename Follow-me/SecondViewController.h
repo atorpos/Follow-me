@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController {
+    NSUserDefaults *standardUsers;
+    CGFloat curwidth;
+    CGFloat curheigh;
+    UIScrollView *mainview;
+    UIView *topview;
+}
 
 
 @end

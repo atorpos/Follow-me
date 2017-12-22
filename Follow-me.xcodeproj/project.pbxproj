@@ -16,6 +16,34 @@
 		49CE8A611FBC97FD00A29557 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A601FBC97FD00A29557 /* main.m */; };
 		49CE8A6B1FBC97FD00A29557 /* Follow_meTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A6A1FBC97FD00A29557 /* Follow_meTests.m */; };
 		49CE8A761FBC97FD00A29557 /* Follow_meUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A751FBC97FD00A29557 /* Follow_meUITests.m */; };
+		49CE8A861FBC989B00A29557 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8A841FBC989B00A29557 /* Crashlytics.framework */; };
+		49CE8A871FBC989B00A29557 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8A851FBC989B00A29557 /* Fabric.framework */; };
+		49CE8A8A1FBC992500A29557 /* Stripe.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49CE8A881FBC992500A29557 /* Stripe.bundle */; };
+		49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8A891FBC992500A29557 /* Stripe.framework */; };
+		49CE8AA71FBCA25A00A29557 /* launchscreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49CE8AA61FBCA25A00A29557 /* launchscreen.jpg */; };
+		49CE8AAB1FBCA2F100A29557 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8AA91FBCA2E700A29557 /* HealthKit.framework */; };
+		49CE8AAC1FBCA2F100A29557 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */; };
+		49F0EF951FC66AAC0015EED8 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF7F1FC66AA90015EED8 /* SBJsonUTF8Stream.m */; };
+		49F0EF961FC66AAC0015EED8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF801FC66AA90015EED8 /* SBJsonStreamWriterAccumulator.m */; };
+		49F0EF971FC66AAC0015EED8 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF821FC66AA90015EED8 /* SBJsonStreamParserAdapter.m */; };
+		49F0EF981FC66AAC0015EED8 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF841FC66AAA0015EED8 /* SBJsonStreamWriter.m */; };
+		49F0EF991FC66AAC0015EED8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF851FC66AAA0015EED8 /* SBJsonStreamParser.m */; };
+		49F0EF9A1FC66AAC0015EED8 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF861FC66AAA0015EED8 /* SBJsonStreamParserState.m */; };
+		49F0EF9B1FC66AAC0015EED8 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF881FC66AAA0015EED8 /* SBJsonTokeniser.m */; };
+		49F0EF9C1FC66AAC0015EED8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF8E1FC66AAB0015EED8 /* SBJsonWriter.m */; };
+		49F0EF9D1FC66AAC0015EED8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF8F1FC66AAB0015EED8 /* SBJsonStreamWriterState.m */; };
+		49F0EF9E1FC66AAC0015EED8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF901FC66AAB0015EED8 /* SBJsonParser.m */; };
+		49F0EF9F1FC66AAC0015EED8 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF921FC66AAC0015EED8 /* SBJsonStreamParserAccumulator.m */; };
+		49F0EFA21FC66BB80015EED8 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EFA11FC66BB70015EED8 /* NSObject+SBJson.m */; };
+		49F0EFA51FC6B4930015EED8 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EFA41FC6B4930015EED8 /* NewsViewController.m */; };
+		49F0EFA71FC6C4BD0015EED8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F0EFA61FC6C4B30015EED8 /* CoreLocation.framework */; };
+		49F0EFA91FC6C4DB0015EED8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F0EFA81FC6C4D00015EED8 /* MapKit.framework */; };
+		730EF80C1FC28C14001D0CE8 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730EF80B1FC28C14001D0CE8 /* SettingViewController.m */; };
+		73C90FBC1FC3E6310008EE3F /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB71FC3E6300008EE3F /* home.png */; };
+		73C90FBD1FC3E6310008EE3F /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB81FC3E6300008EE3F /* search.png */; };
+		73C90FBE1FC3E6310008EE3F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB91FC3E6300008EE3F /* user.png */; };
+		73C90FBF1FC3E6310008EE3F /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FBA1FC3E6310008EE3F /* shop.png */; };
+		73C90FC01FC3E6310008EE3F /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FBB1FC3E6310008EE3F /* bookmark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +82,50 @@
 		49CE8A711FBC97FD00A29557 /* Follow-meUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Follow-meUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CE8A751FBC97FD00A29557 /* Follow_meUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Follow_meUITests.m; sourceTree = "<group>"; };
 		49CE8A771FBC97FD00A29557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49CE8A841FBC989B00A29557 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		49CE8A851FBC989B00A29557 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		49CE8A881FBC992500A29557 /* Stripe.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Stripe.bundle; sourceTree = SOURCE_ROOT; };
+		49CE8A891FBC992500A29557 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = SOURCE_ROOT; };
+		49CE8AA61FBCA25A00A29557 /* launchscreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launchscreen.jpg; path = GUI/launchscreen.jpg; sourceTree = SOURCE_ROOT; };
+		49CE8AA91FBCA2E700A29557 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
+		49CE8AAD1FBCA30600A29557 /* Follow-me.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Follow-me.entitlements"; sourceTree = "<group>"; };
+		49F0EF7E1FC66AA90015EED8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		49F0EF7F1FC66AA90015EED8 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		49F0EF801FC66AA90015EED8 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		49F0EF811FC66AA90015EED8 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		49F0EF821FC66AA90015EED8 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		49F0EF831FC66AAA0015EED8 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		49F0EF841FC66AAA0015EED8 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		49F0EF851FC66AAA0015EED8 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		49F0EF861FC66AAA0015EED8 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		49F0EF871FC66AAA0015EED8 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		49F0EF881FC66AAA0015EED8 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		49F0EF891FC66AAA0015EED8 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		49F0EF8A1FC66AAB0015EED8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		49F0EF8B1FC66AAB0015EED8 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		49F0EF8C1FC66AAB0015EED8 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		49F0EF8D1FC66AAB0015EED8 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		49F0EF8E1FC66AAB0015EED8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		49F0EF8F1FC66AAB0015EED8 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		49F0EF901FC66AAB0015EED8 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		49F0EF911FC66AAB0015EED8 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		49F0EF921FC66AAC0015EED8 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		49F0EF931FC66AAC0015EED8 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		49F0EF941FC66AAC0015EED8 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		49F0EFA01FC66BB70015EED8 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		49F0EFA11FC66BB70015EED8 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		49F0EFA31FC6B4930015EED8 /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		49F0EFA41FC6B4930015EED8 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		49F0EFA61FC6C4B30015EED8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		49F0EFA81FC6C4D00015EED8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		730EF80A1FC28C14001D0CE8 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		730EF80B1FC28C14001D0CE8 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		73C90FB71FC3E6300008EE3F /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = "Follow-me/GUI/home.png"; sourceTree = SOURCE_ROOT; };
+		73C90FB81FC3E6300008EE3F /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = "Follow-me/GUI/search.png"; sourceTree = SOURCE_ROOT; };
+		73C90FB91FC3E6300008EE3F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = "Follow-me/GUI/user.png"; sourceTree = SOURCE_ROOT; };
+		73C90FBA1FC3E6310008EE3F /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shop.png; path = "Follow-me/GUI/shop.png"; sourceTree = SOURCE_ROOT; };
+		73C90FBB1FC3E6310008EE3F /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bookmark.png; path = "Follow-me/GUI/bookmark.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +133,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F0EFA91FC6C4DB0015EED8 /* MapKit.framework in Frameworks */,
+				49F0EFA71FC6C4BD0015EED8 /* CoreLocation.framework in Frameworks */,
+				49CE8AAB1FBCA2F100A29557 /* HealthKit.framework in Frameworks */,
+				49CE8AAC1FBCA2F100A29557 /* HealthKitUI.framework in Frameworks */,
+				49CE8A861FBC989B00A29557 /* Crashlytics.framework in Frameworks */,
+				49CE8A871FBC989B00A29557 /* Fabric.framework in Frameworks */,
+				49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,13 +160,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490DC07C1FBD3F11007B3C04 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
 		49CE8A421FBC97FD00A29557 = {
 			isa = PBXGroup;
 			children = (
+				49CE8A8C1FBC9AD300A29557 /* SBJSON */,
 				49CE8A4D1FBC97FD00A29557 /* Follow-me */,
 				49CE8A691FBC97FD00A29557 /* Follow-meTests */,
 				49CE8A741FBC97FD00A29557 /* Follow-meUITests */,
 				49CE8A4C1FBC97FD00A29557 /* Products */,
+				49CE8AA81FBCA2E700A29557 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,17 +192,24 @@
 		49CE8A4D1FBC97FD00A29557 /* Follow-me */ = {
 			isa = PBXGroup;
 			children = (
+				49CE8AAD1FBCA30600A29557 /* Follow-me.entitlements */,
 				49CE8A4E1FBC97FD00A29557 /* AppDelegate.h */,
 				49CE8A4F1FBC97FD00A29557 /* AppDelegate.m */,
+				490DC07C1FBD3F11007B3C04 /* HealthKit */,
 				49CE8A511FBC97FD00A29557 /* FirstViewController.h */,
 				49CE8A521FBC97FD00A29557 /* FirstViewController.m */,
 				49CE8A541FBC97FD00A29557 /* SecondViewController.h */,
 				49CE8A551FBC97FD00A29557 /* SecondViewController.m */,
 				49CE8A571FBC97FD00A29557 /* Main.storyboard */,
+				49F0EFA31FC6B4930015EED8 /* NewsViewController.h */,
+				49F0EFA41FC6B4930015EED8 /* NewsViewController.m */,
+				730EF80A1FC28C14001D0CE8 /* SettingViewController.h */,
+				730EF80B1FC28C14001D0CE8 /* SettingViewController.m */,
 				49CE8A5A1FBC97FD00A29557 /* Assets.xcassets */,
 				49CE8A5C1FBC97FD00A29557 /* LaunchScreen.storyboard */,
 				49CE8A5F1FBC97FD00A29557 /* Info.plist */,
 				49CE8A601FBC97FD00A29557 /* main.m */,
+				49CE8AA51FBCA19F00A29557 /* GUI */,
 			);
 			path = "Follow-me";
 			sourceTree = "<group>";
@@ -137,6 +232,66 @@
 			path = "Follow-meUITests";
 			sourceTree = "<group>";
 		};
+		49CE8A8C1FBC9AD300A29557 /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				49F0EFA01FC66BB70015EED8 /* NSObject+SBJson.h */,
+				49F0EFA11FC66BB70015EED8 /* NSObject+SBJson.m */,
+				49F0EF7E1FC66AA90015EED8 /* SBJson.h */,
+				49F0EF941FC66AAC0015EED8 /* SBJsonParser.h */,
+				49F0EF901FC66AAB0015EED8 /* SBJsonParser.m */,
+				49F0EF911FC66AAB0015EED8 /* SBJsonStreamParser.h */,
+				49F0EF851FC66AAA0015EED8 /* SBJsonStreamParser.m */,
+				49F0EF8C1FC66AAB0015EED8 /* SBJsonStreamParserAccumulator.h */,
+				49F0EF921FC66AAC0015EED8 /* SBJsonStreamParserAccumulator.m */,
+				49F0EF8D1FC66AAB0015EED8 /* SBJsonStreamParserAdapter.h */,
+				49F0EF821FC66AA90015EED8 /* SBJsonStreamParserAdapter.m */,
+				49F0EF831FC66AAA0015EED8 /* SBJsonStreamParserState.h */,
+				49F0EF861FC66AAA0015EED8 /* SBJsonStreamParserState.m */,
+				49F0EF871FC66AAA0015EED8 /* SBJsonStreamWriter.h */,
+				49F0EF841FC66AAA0015EED8 /* SBJsonStreamWriter.m */,
+				49F0EF931FC66AAC0015EED8 /* SBJsonStreamWriterAccumulator.h */,
+				49F0EF801FC66AA90015EED8 /* SBJsonStreamWriterAccumulator.m */,
+				49F0EF8B1FC66AAB0015EED8 /* SBJsonStreamWriterState.h */,
+				49F0EF8F1FC66AAB0015EED8 /* SBJsonStreamWriterState.m */,
+				49F0EF891FC66AAA0015EED8 /* SBJsonTokeniser.h */,
+				49F0EF881FC66AAA0015EED8 /* SBJsonTokeniser.m */,
+				49F0EF811FC66AA90015EED8 /* SBJsonUTF8Stream.h */,
+				49F0EF7F1FC66AA90015EED8 /* SBJsonUTF8Stream.m */,
+				49F0EF8A1FC66AAB0015EED8 /* SBJsonWriter.h */,
+				49F0EF8E1FC66AAB0015EED8 /* SBJsonWriter.m */,
+			);
+			path = SBJSON;
+			sourceTree = "<group>";
+		};
+		49CE8AA51FBCA19F00A29557 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				73C90FBB1FC3E6310008EE3F /* bookmark.png */,
+				73C90FB71FC3E6300008EE3F /* home.png */,
+				73C90FB81FC3E6300008EE3F /* search.png */,
+				73C90FBA1FC3E6310008EE3F /* shop.png */,
+				73C90FB91FC3E6300008EE3F /* user.png */,
+				49CE8AA61FBCA25A00A29557 /* launchscreen.jpg */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+		49CE8AA81FBCA2E700A29557 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49F0EFA81FC6C4D00015EED8 /* MapKit.framework */,
+				49F0EFA61FC6C4B30015EED8 /* CoreLocation.framework */,
+				49CE8A841FBC989B00A29557 /* Crashlytics.framework */,
+				49CE8A851FBC989B00A29557 /* Fabric.framework */,
+				49CE8A881FBC992500A29557 /* Stripe.bundle */,
+				49CE8A891FBC992500A29557 /* Stripe.framework */,
+				49CE8AA91FBCA2E700A29557 /* HealthKit.framework */,
+				49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +302,7 @@
 				49CE8A471FBC97FD00A29557 /* Sources */,
 				49CE8A481FBC97FD00A29557 /* Frameworks */,
 				49CE8A491FBC97FD00A29557 /* Resources */,
+				49CE8A831FBC987B00A29557 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -204,16 +360,27 @@
 				TargetAttributes = {
 					49CE8A4A1FBC97FD00A29557 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					49CE8A651FBC97FD00A29557 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 49CE8A4A1FBC97FD00A29557;
 					};
 					49CE8A701FBC97FD00A29557 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 49CE8A4A1FBC97FD00A29557;
 					};
 				};
@@ -243,7 +410,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CE8AA71FBCA25A00A29557 /* launchscreen.jpg in Resources */,
+				49CE8A8A1FBC992500A29557 /* Stripe.bundle in Resources */,
+				73C90FBF1FC3E6310008EE3F /* shop.png in Resources */,
+				73C90FBE1FC3E6310008EE3F /* user.png in Resources */,
+				73C90FBC1FC3E6310008EE3F /* home.png in Resources */,
+				73C90FBD1FC3E6310008EE3F /* search.png in Resources */,
 				49CE8A5E1FBC97FD00A29557 /* LaunchScreen.storyboard in Resources */,
+				73C90FC01FC3E6310008EE3F /* bookmark.png in Resources */,
 				49CE8A5B1FBC97FD00A29557 /* Assets.xcassets in Resources */,
 				49CE8A591FBC97FD00A29557 /* Main.storyboard in Resources */,
 			);
@@ -265,15 +439,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		49CE8A831FBC987B00A29557 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 37f29f067f759049c51f436859a5d4bf3e5327e2 22da404740a041e91b7506320d2ad573d45f40b0e63c58ccf995b6bf5f9d96cc";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		49CE8A471FBC97FD00A29557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730EF80C1FC28C14001D0CE8 /* SettingViewController.m in Sources */,
 				49CE8A561FBC97FD00A29557 /* SecondViewController.m in Sources */,
+				49F0EF9F1FC66AAC0015EED8 /* SBJsonStreamParserAccumulator.m in Sources */,
+				49F0EF9B1FC66AAC0015EED8 /* SBJsonTokeniser.m in Sources */,
+				49F0EF961FC66AAC0015EED8 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				49F0EF981FC66AAC0015EED8 /* SBJsonStreamWriter.m in Sources */,
+				49F0EF9E1FC66AAC0015EED8 /* SBJsonParser.m in Sources */,
 				49CE8A501FBC97FD00A29557 /* AppDelegate.m in Sources */,
+				49F0EF9C1FC66AAC0015EED8 /* SBJsonWriter.m in Sources */,
+				49F0EF951FC66AAC0015EED8 /* SBJsonUTF8Stream.m in Sources */,
+				49F0EF9D1FC66AAC0015EED8 /* SBJsonStreamWriterState.m in Sources */,
 				49CE8A611FBC97FD00A29557 /* main.m in Sources */,
 				49CE8A531FBC97FD00A29557 /* FirstViewController.m in Sources */,
+				49F0EF9A1FC66AAC0015EED8 /* SBJsonStreamParserState.m in Sources */,
+				49F0EF971FC66AAC0015EED8 /* SBJsonStreamParserAdapter.m in Sources */,
+				49F0EFA51FC6B4930015EED8 /* NewsViewController.m in Sources */,
+				49F0EFA21FC66BB80015EED8 /* NSObject+SBJson.m in Sources */,
+				49F0EF991FC66AAC0015EED8 /* SBJsonStreamParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -425,7 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -436,13 +640,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Follow-me/Follow-me.entitlements";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8EGEYDRW9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Follow-me/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-me";
+				PRODUCT_BUNDLE_IDENTIFIER = com.altawoz.followme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "16251630-981d-488d-b88a-b846e72a8d0d";
+				PROVISIONING_PROFILE_SPECIFIER = followme_dev;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,13 +662,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Follow-me/Follow-me.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8EGEYDRW9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Follow-me/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-me";
+				PRODUCT_BUNDLE_IDENTIFIER = com.altawoz.followme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "729060ec-0069-4c05-8029-bd3378a98f1e";
+				PROVISIONING_PROFILE_SPECIFIER = followme_dist;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -464,13 +685,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8EGEYDRW9;
 				INFOPLIST_FILE = "Follow-meTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-meTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Follow-me.app/Follow-me";
 			};
 			name = Debug;
@@ -479,13 +702,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8EGEYDRW9;
 				INFOPLIST_FILE = "Follow-meTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-meTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Follow-me.app/Follow-me";
 			};
 			name = Release;
@@ -493,13 +719,15 @@
 		49CE8A811FBC97FD00A29557 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8EGEYDRW9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Follow-meUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-meUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Follow-me";
 			};
 			name = Debug;
@@ -507,13 +735,15 @@
 		49CE8A821FBC97FD00A29557 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8EGEYDRW9;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Follow-meUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.altawoz.Follow-meUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Follow-me";
 			};
 			name = Release;

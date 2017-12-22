@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <Stripe/Stripe.h>
+#import <HealthKit/HealthKit.h>
+#import "SBJson.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +22,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
+    
+    // TODO: Replace with your own test publishable key
+    // TODO: DEBUG ONLY! Remove / conditionalize before launch
+    [Stripe setDefaultPublishableKey:@"pk_live_8mkhULSiQkSyXdRM1GeK8bo8"];
+
+    
+    //initial_url = @"https://d3q3ok4iuja3c0.cloudfront.net/payload/initial_json.json";
+    initial_url = @"https://s3.amazonaws.com/follow_me_news/payload/initial_json.json";
+    //NSURL *url = [NSURL URLWithString:initial_url];
+    //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    //NSURLSession *urlsession = [NSURLSession sharedSession];
+    //if([urlsession dataTaskWithRequest:request]) {
+    //    NSError *error;
+    //    NSData *urlData_fav = [NSData dataWithContentsOfURL:url];
+    //    json = [NSJSONSerialization JSONObjectWithData:urlData_fav options:kNilOptions error:&error];
+    //    NSLog(@"%@-%lu", [json objectForKey:@"name"],[[json objectForKey:@"front_image_local"] count]); //READ INITIAL JSON FILE, IT CAN UPDATE IT AUTOMATICAL AFTERWARE
+    //}
+    
+    
     return YES;
 }
 
