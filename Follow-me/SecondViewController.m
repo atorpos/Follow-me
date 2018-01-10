@@ -41,6 +41,13 @@
     topview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth/2)];
     topview.backgroundColor = [UIColor lightGrayColor];
     
+    UIImageView *topimgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, topview.frame.size.width, topview.frame.size.height)];
+    UIImage *topimg = [UIImage imageNamed:@"shophead.jpg"];
+    topimgview.contentMode = UIViewContentModeScaleAspectFill;
+    [topimgview setImage:topimg];
+    
+    [topview addSubview:topimgview];
+    
     UIButton *firstbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     firstbutton.frame = CGRectMake(0, curwidth/2, curwidth/2, curwidth/2);
     [firstbutton setTitle:[NSString stringWithFormat:@"電腦"] forState:UIControlStateNormal];

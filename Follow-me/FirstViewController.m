@@ -29,6 +29,20 @@
     rewardstep = 200000.00;
     curwidth = [UIScreen mainScreen].bounds.size.width;
     curheigh = [UIScreen mainScreen].bounds.size.height;
+    newstitle = [[NSArray alloc] init];
+    newsdate = [[NSArray alloc] init];
+    newsimg = [[NSArray alloc] init];
+    newstitle = [[NSArray alloc] init];
+    newsdate = [[NSArray alloc] init];
+    newsimg = [[NSArray alloc] init];
+    newsauthor = [[NSArray alloc] init];
+    storeproductname = [[NSArray alloc] init];
+    storeproductprice = [[NSArray alloc] init];
+    storeproductcat = [[NSArray alloc] init];
+    storeproductimg = [[NSArray alloc] init];
+    newsid = [[NSArray alloc] init];
+    productid = [[NSArray alloc] init];
+    
     [self createui];
     [self createview];
     self.navigationController.navigationBar.topItem.title = @"快樂猫";
@@ -62,6 +76,33 @@
     
 }
 -(void)viewDidAppear:(BOOL)animated {
+    NSURL *medianewurl = [NSURL URLWithString:HEADER_MEDIA_URL];
+    NSURL *shopurl = [NSURL URLWithString:HEADER_SHOP_URL];
+    NSData *mediadata = [NSData dataWithContentsOfURL:medianewurl];
+    NSData *shopdata = [NSData dataWithContentsOfURL:shopurl];
+    
+    [self performSelectorOnMainThread:@selector(fetchfav:) withObject:mediadata waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(fetchshop:) withObject:shopdata waitUntilDone:NO];
+    
+}
+-(void)fetchfav:(NSData *)responseData {
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    newstitle = [json valueForKeyPath:@"post_title"];
+    newsdate = [json valueForKeyPath:@"post_date"];
+    newsimg = [json valueForKeyPath:@"imgurl"];
+    newsauthor = [json valueForKeyPath:@"post_author"];
+    newsid = [json valueForKeyPath:@"ID"];
+}
+-(void)fetchshop:(NSData *) responseData {
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    storeproductname = [json valueForKeyPath:@"post_title"];
+    storeproductprice = [[json valueForKeyPath:@"meta"] valueForKeyPath:@"_regular_price"];
+    storeproductcat = [[json valueForKeyPath:@"meta"] valueForKeyPath:@"_stock_status"];
+    storeproductimg = [json valueForKeyPath:@"imgurl"];
+    productid = [json valueForKeyPath:@"ID"];
+    NSLog(@"%@", storeproductname);
 }
 -(void)getthestep:(double)sender {
     double precentage = totaldist/rewarddist;
@@ -93,8 +134,21 @@
     
     UILabel *welcomesnogen = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, loginpanelview.frame.size.width-10, 20)];
     welcomesnogen.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightLight];
-    welcomesnogen.text = @"歡迎";
+    welcomesnogen.text = @"歡迎,";
     
+    
+    UILabel *totalsteplab = [[UILabel alloc] initWithFrame:CGRectMake(goalbar.frame.size.width/2, loginpanelview.frame.size.height/2-25, goalbar.frame.size.width/2-5, 19)];
+    totalsteplab.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightUltraLight];
+    totalsteplab.text = @"目標 200,000步";
+    totalsteplab.textAlignment = NSTextAlignmentRight;
+    
+    currentstep = [[UILabel alloc] initWithFrame:CGRectMake(5, loginpanelview.frame.size.height/2-25, goalbar.frame.size.width/2-5, 19)];
+    currentstep.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightUltraLight];
+    currentstep.textAlignment= NSTextAlignmentLeft;
+    [currentstep setText:@"Loading..."];
+    
+    [loginpanelview addSubview:totalsteplab];
+    [loginpanelview addSubview:currentstep];
     [loginpanelview addSubview:welcomesnogen];
     [loginpanelview addSubview:goalbar];
 }
@@ -146,8 +200,12 @@
                                        
                                    }];
         NSLog(@"total step %f", totalstep);
+        [self performSelectorOnMainThread:@selector(updatestep:) withObject:[NSString stringWithFormat:@"現在運動了 %.0f 步", totalstep] waitUntilDone:YES];
     };
     [healthStore executeQuery:query];
+}
+-(IBAction)updatestep:(id)sender {
+    [currentstep setText:sender];
 }
 -(void)readdist {
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -210,10 +268,23 @@
     topview.layer.shadowOpacity = 0.6f;
     topview.layer.masksToBounds = NO;
     
+    UIImageView *welcomeview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, topview.frame.size.width, topview.frame.size.height)];
+    UIImage *welcomeimage = [UIImage imageNamed:@"welcome.jpg"];
+    welcomeview.contentMode = UIViewContentModeScaleAspectFill;
+    [welcomeview setImage:welcomeimage];
+    
+    [topview addSubview:welcomeview];
+    
     //adview banner only for the ad
     
     adbannerview = [[UIView alloc] initWithFrame:CGRectMake(5, curheigh/5+5, curwidth-10, 64)];
     adbannerview.backgroundColor = [UIColor lightGrayColor];
+    
+    UIImageView *adimgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, adbannerview.frame.size.width, adbannerview.frame.size.height)];
+    UIImage *adimg = [UIImage imageNamed:@"ad.jpg"];
+    adimgview.contentMode = UIViewContentModeScaleAspectFill;
+    [adimgview setImage:adimg];
+    [adbannerview addSubview:adimgview];
     
     //end of the advirew banner panel
     
@@ -259,7 +330,7 @@
     productpanel2label.text = @"熱門產品";
     productpanel2label.textColor  = [UIColor blackColor];
     
-    [productpanelview_2 addSubview:productpanellabel];
+    [productpanelview_2 addSubview:productpanel2label];
     
     //end of the last product iview panel of showing the heighlightedfd products
     

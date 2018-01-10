@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <HealthKit/HealthKit.h>
+#import "serviceurl.h"
 
 @interface FirstViewController : UIViewController {
     NSUserDefaults *standardUsers;
@@ -27,6 +28,17 @@
     UIView *productpanelview_2;
     UIView *productshortpanelview;
     UIView *goalbar;
+    UILabel *currentstep;
+    NSArray *newstitle;
+    NSArray *newsdate;
+    NSArray *newsimg;
+    NSArray *newsauthor;
+    NSArray *storeproductname;
+    NSArray *storeproductprice;
+    NSArray *storeproductcat;
+    NSArray *storeproductimg;
+    NSArray *newsid;
+    NSArray *productid;
 }
 
 @end

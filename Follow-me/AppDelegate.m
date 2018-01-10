@@ -26,7 +26,7 @@
     
     // TODO: Replace with your own test publishable key
     // TODO: DEBUG ONLY! Remove / conditionalize before launch
-    [Stripe setDefaultPublishableKey:@"pk_live_8mkhULSiQkSyXdRM1GeK8bo8"];
+    [Stripe setDefaultPublishableKey:@"pk_live_W9DfRAqvXM0UV2KVnax2fCUd"];
 
     
     //initial_url = @"https://d3q3ok4iuja3c0.cloudfront.net/payload/initial_json.json";

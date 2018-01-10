@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49133A331FFEAAB60088E7C9 /* welcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49133A321FFEAAB60088E7C9 /* welcome.jpg */; };
+		49133A361FFEAEFD0088E7C9 /* ad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49133A351FFEAEFD0088E7C9 /* ad.jpg */; };
+		49133A381FFEB3070088E7C9 /* shophead.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49133A371FFEB3070088E7C9 /* shophead.jpg */; };
 		49CE8A501FBC97FD00A29557 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A4F1FBC97FD00A29557 /* AppDelegate.m */; };
 		49CE8A531FBC97FD00A29557 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A521FBC97FD00A29557 /* FirstViewController.m */; };
 		49CE8A561FBC97FD00A29557 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE8A551FBC97FD00A29557 /* SecondViewController.m */; };
@@ -64,6 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49133A321FFEAAB60088E7C9 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = welcome.jpg; path = ../../../../Pictures/Ultimate/followme/welcome.jpg; sourceTree = "<group>"; };
+		49133A341FFEAABE0088E7C9 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome.jpg; sourceTree = "<group>"; };
+		49133A351FFEAEFD0088E7C9 /* ad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ad.jpg; path = ../../../../Pictures/Ultimate/followme/ad.jpg; sourceTree = "<group>"; };
+		49133A371FFEB3070088E7C9 /* shophead.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shophead.jpg; path = ../../../../Pictures/Ultimate/followme/shophead.jpg; sourceTree = "<group>"; };
+		4953BA821FFF4E96009CBC86 /* serviceurl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serviceurl.h; sourceTree = "<group>"; };
 		49CE8A4B1FBC97FD00A29557 /* Follow-me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Follow-me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CE8A4E1FBC97FD00A29557 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		49CE8A4F1FBC97FD00A29557 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -195,11 +203,15 @@
 				49CE8AAD1FBCA30600A29557 /* Follow-me.entitlements */,
 				49CE8A4E1FBC97FD00A29557 /* AppDelegate.h */,
 				49CE8A4F1FBC97FD00A29557 /* AppDelegate.m */,
+				4953BA821FFF4E96009CBC86 /* serviceurl.h */,
 				490DC07C1FBD3F11007B3C04 /* HealthKit */,
 				49CE8A511FBC97FD00A29557 /* FirstViewController.h */,
 				49CE8A521FBC97FD00A29557 /* FirstViewController.m */,
+				49133A351FFEAEFD0088E7C9 /* ad.jpg */,
+				49133A321FFEAAB60088E7C9 /* welcome.jpg */,
 				49CE8A541FBC97FD00A29557 /* SecondViewController.h */,
 				49CE8A551FBC97FD00A29557 /* SecondViewController.m */,
+				49133A371FFEB3070088E7C9 /* shophead.jpg */,
 				49CE8A571FBC97FD00A29557 /* Main.storyboard */,
 				49F0EFA31FC6B4930015EED8 /* NewsViewController.h */,
 				49F0EFA41FC6B4930015EED8 /* NewsViewController.m */,
@@ -267,6 +279,7 @@
 		49CE8AA51FBCA19F00A29557 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				49133A341FFEAABE0088E7C9 /* welcome.jpg */,
 				73C90FBB1FC3E6310008EE3F /* bookmark.png */,
 				73C90FB71FC3E6300008EE3F /* home.png */,
 				73C90FB81FC3E6300008EE3F /* search.png */,
@@ -411,14 +424,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				49CE8AA71FBCA25A00A29557 /* launchscreen.jpg in Resources */,
+				49133A331FFEAAB60088E7C9 /* welcome.jpg in Resources */,
 				49CE8A8A1FBC992500A29557 /* Stripe.bundle in Resources */,
 				73C90FBF1FC3E6310008EE3F /* shop.png in Resources */,
 				73C90FBE1FC3E6310008EE3F /* user.png in Resources */,
 				73C90FBC1FC3E6310008EE3F /* home.png in Resources */,
+				49133A361FFEAEFD0088E7C9 /* ad.jpg in Resources */,
 				73C90FBD1FC3E6310008EE3F /* search.png in Resources */,
 				49CE8A5E1FBC97FD00A29557 /* LaunchScreen.storyboard in Resources */,
 				73C90FC01FC3E6310008EE3F /* bookmark.png in Resources */,
 				49CE8A5B1FBC97FD00A29557 /* Assets.xcassets in Resources */,
+				49133A381FFEB3070088E7C9 /* shophead.jpg in Resources */,
 				49CE8A591FBC97FD00A29557 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,7 +668,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.altawoz.followme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16251630-981d-488d-b88a-b846e72a8d0d";
+				PROVISIONING_PROFILE = "66c4d7fd-6c2c-414d-98bb-7c12c2e9c1ab";
 				PROVISIONING_PROFILE_SPECIFIER = followme_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
