@@ -55,6 +55,7 @@
         [catData_set writeToFile:filepath_cat atomically:YES];
     }
     
+    
     //NSURL *url = [NSURL URLWithString:initial_url];
     //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     //NSURLSession *urlsession = [NSURLSession sharedSession];
@@ -109,6 +110,9 @@
     } else {
         [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
     }
+}
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"%@", deviceToken);
 }
 
 

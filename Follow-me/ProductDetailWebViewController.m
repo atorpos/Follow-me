@@ -23,7 +23,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated {
     NSLog(@"post id: %@", productid);
-    
+    defaults = [NSUserDefaults standardUserDefaults];
     self.navigationController.navigationBar.topItem.title = detailtitle;
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -48,49 +48,7 @@
     showcontentview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curheigh)];
     
     [self.view addSubview:showcontentview];
-    [self cartview];
-}
--(void)cartview {
-    UIView *cartview = [[UIView alloc] init];
-    if (curheigh == 812.000000) {
-        cartview.frame = CGRectMake(0, curheigh-133, curwidth, 50);
-    } else {
-        cartview.frame = CGRectMake(0, curheigh-99, curwidth, 50);
-    }
-    
-    cartview.backgroundColor = [UIColor whiteColor];
-    
-    UIButton *addtocart = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addtocart.frame = CGRectMake(curwidth/2, 0, curwidth/2, 50);
-    addtocart.backgroundColor = [UIColor colorWithRed:0.24 green:0.47 blue:0.72 alpha:0.5];
-    [addtocart setTitle:@"加入購物車" forState:UIControlStateNormal];
-    [addtocart setTintColor:[UIColor whiteColor]];
-    addtocart.tag = 0;
-    [addtocart addTarget:self action:@selector(senttobucket:) forControlEvents:UIControlEventTouchUpInside];
-    UIButton *addtolist = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addtolist.frame = CGRectMake(0, 0, curwidth/2, 50);
-    addtolist.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
-    [addtolist setTitle:@"加入清單" forState:UIControlStateNormal];
-    [addtolist setTintColor:[UIColor colorWithRed:0.24 green:0.47 blue:0.72 alpha:0.8]];
-    addtolist.tag = 1;
-    [addtolist addTarget:self action:@selector(senttobucket:) forControlEvents:UIControlEventTouchUpInside];
-    [cartview addSubview:addtolist];
-    [cartview addSubview:addtocart];
-    [self.view addSubview:cartview];
-}
--(IBAction)senttobucket:(id)sender {
-    UIButton *passvalue = (UIButton *)sender;
-    NSLog(@"%ld",(long)passvalue.tag);
-    switch (passvalue.tag) {
-        case 0:
-            NSLog(@"select to cart");
-            break;
-        case 1:
-            NSLog(@"slect to list");
-            break;
-        default:
-            break;
-    }
+    //[self cartview];
 }
 /*
 #pragma mark - Navigation

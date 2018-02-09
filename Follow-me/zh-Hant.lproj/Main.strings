@@ -1,0 +1,33 @@
+
+/* Class = "UITabBarItem"; title = "商店"; ObjectID = "1al-dx-cJ7"; */
+"1al-dx-cJ7.title" = "商店";
+
+/* Class = "UITabBarItem"; title = "新聞"; ObjectID = "7m9-ep-bjY"; */
+"7m9-ep-bjY.title" = "新聞";
+
+/* Class = "UITabBarItem"; title = "購物車"; ObjectID = "9Tp-BF-au1"; */
+"9Tp-BF-au1.title" = "購物車";
+
+/* Class = "UILabel"; text = "Loaded by FirstViewController"; ObjectID = "A5M-7J-77L"; */
+"A5M-7J-77L.text" = "Loaded by FirstViewController";
+
+/* Class = "UITabBarItem"; title = "會員"; ObjectID = "JuI-Py-HNw"; */
+"JuI-Py-HNw.title" = "會員";
+
+/* Class = "UILabel"; text = "First View"; ObjectID = "KQZ-1w-vlD"; */
+"KQZ-1w-vlD.text" = "First View";
+
+/* Class = "UILabel"; text = "Loaded by SecondViewController"; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by SecondViewController";
+
+/* Class = "UITabBarItem"; title = "First"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "First";
+
+/* Class = "UITabBarItem"; title = "Second"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Second";
+
+/* Class = "UITabBarItem"; title = "主頁"; ObjectID = "z9L-qP-Yfb"; */
+"z9L-qP-Yfb.title" = "主頁";
+
+/* Class = "UILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "Second View";

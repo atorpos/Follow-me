@@ -16,10 +16,10 @@
     CGFloat curheigh;
     NSString *pageurl;
     UIActivityIndicatorView *activityView;
+    NSUserDefaults *defaults;
 }
 @property (copy) NSString *detailtitle;
 @property (copy) NSString *productid;
 @property (copy) NSString *newscontents;
-
 
 @end
