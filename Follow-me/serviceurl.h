@@ -11,6 +11,7 @@
 
 #define HEADER_MEDIA_URL          @"https://www.follow-me.info/prasejson.php"
 #define HEADER_SHOP_URL           @"https://www.follow-me.pro/parsejson.php"
+#define HEADER_FEAT_URL           @"https://www.follow-me.pro/featurejson.php"
 
 #define NOTIFY_MTU 20
 

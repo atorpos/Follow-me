@@ -26,11 +26,35 @@
     
     // TODO: Replace with your own test publishable key
     // TODO: DEBUG ONLY! Remove / conditionalize before launch
-    [Stripe setDefaultPublishableKey:@"pk_live_W9DfRAqvXM0UV2KVnax2fCUd"];
-
+    [Stripe setDefaultPublishableKey:@"pk_live_W9DfRAqvXM0UV2KVnax2fCUd"]; //testapi pk_test_uxUuoLZuOXfqprqOntgKspYl liveapi pk_live_W9DfRAqvXM0UV2KVnax2fCUd
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    standarddefs = [NSUserDefaults standardUserDefaults];
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     //initial_url = @"https://d3q3ok4iuja3c0.cloudfront.net/payload/initial_json.json";
     initial_url = @"https://s3.amazonaws.com/follow_me_news/payload/initial_json.json";
+    NSURL *url = [NSURL URLWithString:initial_url];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLSession *urlsession = [NSURLSession sharedSession];
+    
+    if([urlsession dataTaskWithRequest:request]) {
+        NSData *urlData_fav = [NSData dataWithContentsOfURL:url];
+        NSString *filepath_fav = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"initialjson.json"];
+        [urlData_fav writeToFile:filepath_fav atomically:YES];
+    }
+    NSString *cat_string = @"https://www.follow-me.pro/parsejson_cat.php";
+    NSURL *cat_url = [NSURL URLWithString:cat_string];
+    NSURLRequest *cat_request = [[NSURLRequest alloc] initWithURL:cat_url];
+    NSURLSession *cat_session = [NSURLSession sharedSession];
+    
+    if ([cat_session dataTaskWithRequest:cat_request]) {
+        NSData *catData_set = [NSData dataWithContentsOfURL:cat_url];
+        NSString *filepath_cat = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"catjson.json"];
+        [catData_set writeToFile:filepath_cat atomically:YES];
+    }
+    
     //NSURL *url = [NSURL URLWithString:initial_url];
     //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     //NSURLSession *urlsession = [NSURLSession sharedSession];
@@ -49,12 +73,22 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    if ([[standarddefs objectForKey:@"chooseitemid"] count] != 0) {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[standarddefs objectForKey:@"chooseitemid"] count];
+    } else {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
+    }
 }
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    if ([[standarddefs objectForKey:@"chooseitemid"] count] != 0) {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[standarddefs objectForKey:@"chooseitemid"] count];
+    } else {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
+    }
 }
 
 
@@ -70,6 +104,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    if ([[standarddefs objectForKey:@"chooseitemid"] count] != 0) {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [[standarddefs objectForKey:@"chooseitemid"] count];
+    } else {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = -1;
+    }
 }
 
 

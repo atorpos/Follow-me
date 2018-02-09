@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class LoginViewController;
+@class WebViewController;
+
 @interface SettingViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     CGFloat curwidth;
     CGFloat curheigh;
     NSUserDefaults *standardUser;
-
+    IBOutlet UIButton *logoutbutton;
+    IBOutlet UIButton *registbutton;
+    LoginViewController *loginview;
+    WebViewController *webview;
 }
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
 

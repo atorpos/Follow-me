@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <HealthKit/HealthKit.h>
 #import "serviceurl.h"
+#import "UIImageView+WebCache.h"
 
+@class ProductDetailViewController;
+@class NewsDetailViewController;
+@class LoginViewController;
+@class WebViewController;
 @interface FirstViewController : UIViewController {
     NSUserDefaults *standardUsers;
     CGFloat curwidth;
@@ -33,12 +38,24 @@
     NSArray *newsdate;
     NSArray *newsimg;
     NSArray *newsauthor;
+    NSArray *newscontents;
     NSArray *storeproductname;
     NSArray *storeproductprice;
     NSArray *storeproductcat;
     NSArray *storeproductimg;
+    NSArray *storeproductexcep;
     NSArray *newsid;
     NSArray *productid;
+    NSArray *featproductname;
+    NSArray *featproductprice;
+    NSArray *featproductcat;
+    NSArray *featproductimg;
+    NSArray *featproductid;
+    NSArray *featproductexcep;
+    ProductDetailViewController *productview;
+    NewsDetailViewController *newsview;
+    LoginViewController *loginview;
+    WebViewController *webview;
 }
 
 @end
