@@ -33,8 +33,7 @@
         [[super.tabBarController.viewControllers objectAtIndex:3] tabBarItem].badgeValue = [NSString stringWithFormat:@"%lu", [[standardUsers objectForKey:@"chooseitemid"] count]];
     }
     NSLog(@"%@", [standardUsers objectForKey:@"username"]);
-    totaldist = 0;
-    totalstep = 0;
+    
     rewarddist = 150000.00;
     rewardstep = 150000.00;
     curwidth = [UIScreen mainScreen].bounds.size.width;
@@ -72,31 +71,6 @@
     NSData *favdata = [NSData dataWithContentsOfFile:checkfile];
     [self performSelectorOnMainThread:@selector(fetchlink:) withObject:favdata waitUntilDone:NO];
     
-    if(NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable])
-    {
-        // Add your HealthKit code here
-        NSLog(@"the data is available");
-        healthStore = [[HKHealthStore alloc] init];
-        NSSet *readObjectTypes  = [NSSet setWithObjects:
-                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
-                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning],
-                                   nil];
-        [healthStore requestAuthorizationToShareTypes:nil
-                                            readTypes:readObjectTypes
-                                           completion:^(BOOL success, NSError *error) {
-                                               if(success == YES) {
-                                                   NSLog(@"read is success");
-                                                   [self readstepHK];
-                                                   [self readdist];
-                                               } else {
-                                                   NSLog(@"the read is not success");
-                                               }
-                                           }];
-        
-    } else {
-        NSLog(@"the data is not available");
-    }
-    
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.navigationBar setTranslucent:YES];
@@ -115,6 +89,33 @@
     [self performSelectorOnMainThread:@selector(fetchnews:) withObject:mediadata waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(fetchshop:) withObject:shopdata waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(fetchfav:) withObject:feadata waitUntilDone:NO];
+    totaldist = 0;
+    totalstep = 0;
+    if(NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable])
+    {
+        // Add your HealthKit code here
+        NSLog(@"the data is available");
+        healthStore = [[HKHealthStore alloc] init];
+        NSSet *readObjectTypes  = [NSSet setWithObjects:
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
+                                   [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning],
+                                   nil];
+        [healthStore requestAuthorizationToShareTypes:nil
+                                            readTypes:readObjectTypes
+                                           completion:^(BOOL success, NSError *error) {
+                                               if(success == YES && [standardUsers objectForKey:@"username"])
+                                               {
+                                                   NSLog(@"read is success");
+                                                   [self readstepHK];
+                                                   [self readdist];
+                                               } else {
+                                                   NSLog(@"the read is not success");
+                                               }
+                                           }];
+        
+    } else {
+        NSLog(@"the data is not available");
+    }
 }
 -(void)fetchlink:(NSData *)responseData {
     NSError *error;
@@ -191,7 +192,7 @@
     
     UILabel *totalsteplab = [[UILabel alloc] initWithFrame:CGRectMake(goalbar.frame.size.width/2, loginpanelview.frame.size.height/2-25, goalbar.frame.size.width/2-5, 19)];
     totalsteplab.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightUltraLight];
-    totalsteplab.text = @"目標 200,000步";
+    totalsteplab.text = @"每一萬步送港幣1元!";
     totalsteplab.textAlignment = NSTextAlignmentRight;
     
     currentstep = [[UILabel alloc] initWithFrame:CGRectMake(5, loginpanelview.frame.size.height/2-25, goalbar.frame.size.width/2-5, 19)];
@@ -205,6 +206,7 @@
     [loginpanelview addSubview:goalbar];
 }
 -(void)memberlogin {
+    [bottomgoalview removeFromSuperview];
     UILabel *welcomesnogen = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, loginpanelview.frame.size.width-10, 20)];
     welcomesnogen.font = [UIFont systemFontOfSize:18.0f weight:UIFontWeightLight];
     welcomesnogen.text = @"歡迎！登入穫取更多優惠！";
@@ -279,13 +281,30 @@
                                        
                                    }];
         NSLog(@"total step %f", totalstep);
-        [self performSelectorOnMainThread:@selector(updatestep:) withObject:[NSString stringWithFormat:@"現在運動了 %.0f 步", totalstep] waitUntilDone:YES];
+        if (totalstep != 0) {
+            [self performSelectorOnMainThread:@selector(updatestep:) withObject:[NSString stringWithFormat:@"現在運動了 %.0f 步", totalstep] waitUntilDone:YES];
+            [self performSelectorOnMainThread:@selector(adddicount) withObject:nil waitUntilDone:NO];
+        }
+        
     };
     [healthStore executeQuery:query];
 }
 
 -(IBAction)updatestep:(id)sender {
     [currentstep setText:sender];
+}
+-(void)adddicount {
+    bottomgoalview = [[UIView alloc] initWithFrame:CGRectMake(0, loginpanelview.frame.size.height-40, loginpanelview.frame.size.width, 40)];
+    bottomgoalview.backgroundColor = [UIColor colorWithRed:0.85 green:0.38 blue:0.33 alpha:0.8];
+    
+    UILabel *receivediscount = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, bottomgoalview.frame.size.width, 19)];
+    receivediscount.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightThin];
+    receivediscount.text = [NSString stringWithFormat:@"現在有港幣 %.0f.00元的節扣", totalstep/10000];
+    [standardUsers setObject:[NSString stringWithFormat:@"%.0f", totalstep/10000] forKey:@"stepdiscount"];
+    receivediscount.textAlignment = NSTextAlignmentCenter;
+    receivediscount.textColor = [UIColor whiteColor];
+    [bottomgoalview addSubview:receivediscount];
+    [loginpanelview addSubview:bottomgoalview];
 }
 
 -(IBAction)NMethod:(id)sender {
@@ -650,6 +669,8 @@
 -(void)createstepview {
     steplable = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, 300, 60)];
     steplable.text = [NSString stringWithFormat:@"%f, %f", totalstep, totaldist];
+    [standardUsers setObject:[NSString stringWithFormat:@"%.0f", totalstep] forKey:@"totalstep"];
+    
     [self.view addSubview:steplable];
 }
 -(IBAction)updatescreen:(id)sender {

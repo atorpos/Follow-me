@@ -120,20 +120,21 @@
         bottomsubtitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, curwidth-15, 25)];
         bottomsubtitle.text = [NSString stringWithFormat:@"購物車總計："];
         [bottomsubtitle setNeedsDisplay];
-        cartsubtotal.text = [NSString stringWithFormat:@"港幣 %.2f", subtotal];
+        invtotal = subtotal - [[defaults objectForKey:@"stepdiscount"] doubleValue];
+        cartsubtotal.text = [NSString stringWithFormat:@"港幣 %.2f", invtotal];
         [bottomcolmn addSubview:bottomsubtitle];
         [bottomcolmn addSubview:cartsubtotal];
         [bottomcolmn addSubview:checkoutbutton];
         [bottomcolmn addSubview:applepaybutton];
-        invtotal = subtotal;
+        
     }
 }
 -(void)applePaytapped {
     paymentRequest = [Stripe paymentRequestWithMerchantIdentifier:@"merchant.pro.followmw.www" country:@"HK" currency:@"HKD"];
-    
     paymentRequest.paymentSummaryItems = @[
-                                           [PKPaymentSummaryItem summaryItemWithLabel:@"" amount:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%.2f", subtotal] locale:nil]]
+                                           [PKPaymentSummaryItem summaryItemWithLabel:@"單價" amount:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%.2f", invtotal] locale:nil]]
                                            ];
+    
     //try with
     NSSet *pkset = [NSSet setWithObjects:PKContactFieldPostalAddress ,PKContactFieldName, PKContactFieldEmailAddress, PKContactFieldPhoneNumber, nil];
     NSLog(@"%@", pkset);

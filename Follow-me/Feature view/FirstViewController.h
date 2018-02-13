@@ -56,6 +56,7 @@
     NewsDetailViewController *newsview;
     LoginViewController *loginview;
     WebViewController *webview;
+    UIView *bottomgoalview;
 }
 
 @end
