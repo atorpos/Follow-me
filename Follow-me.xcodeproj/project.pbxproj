@@ -61,8 +61,6 @@
 		49CE8A8A1FBC992500A29557 /* Stripe.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49CE8A881FBC992500A29557 /* Stripe.bundle */; };
 		49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8A891FBC992500A29557 /* Stripe.framework */; };
 		49CE8AA71FBCA25A00A29557 /* launchscreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49CE8AA61FBCA25A00A29557 /* launchscreen.jpg */; };
-		49CE8AAB1FBCA2F100A29557 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8AA91FBCA2E700A29557 /* HealthKit.framework */; };
-		49CE8AAC1FBCA2F100A29557 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */; };
 		49F0EF951FC66AAC0015EED8 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF7F1FC66AA90015EED8 /* SBJsonUTF8Stream.m */; };
 		49F0EF961FC66AAC0015EED8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF801FC66AA90015EED8 /* SBJsonStreamWriterAccumulator.m */; };
 		49F0EF971FC66AAC0015EED8 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0EF821FC66AA90015EED8 /* SBJsonStreamParserAdapter.m */; };
@@ -268,8 +266,6 @@
 			files = (
 				49F0EFA91FC6C4DB0015EED8 /* MapKit.framework in Frameworks */,
 				49F0EFA71FC6C4BD0015EED8 /* CoreLocation.framework in Frameworks */,
-				49CE8AAB1FBCA2F100A29557 /* HealthKit.framework in Frameworks */,
-				49CE8AAC1FBCA2F100A29557 /* HealthKitUI.framework in Frameworks */,
 				49CE8A861FBC989B00A29557 /* Crashlytics.framework in Frameworks */,
 				49CE8A871FBC989B00A29557 /* Fabric.framework in Frameworks */,
 				49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */,

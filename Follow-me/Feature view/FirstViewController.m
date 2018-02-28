@@ -91,6 +91,7 @@
     [self performSelectorOnMainThread:@selector(fetchfav:) withObject:feadata waitUntilDone:NO];
     totaldist = 0;
     totalstep = 0;
+    /*
     if(NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable])
     {
         // Add your HealthKit code here
@@ -116,6 +117,7 @@
     } else {
         NSLog(@"the data is not available");
     }
+     */
 }
 -(void)fetchlink:(NSData *)responseData {
     NSError *error;
@@ -200,10 +202,31 @@
     currentstep.textAlignment= NSTextAlignmentLeft;
     [currentstep setText:@"Loading..."];
     
-    [loginpanelview addSubview:totalsteplab];
-    [loginpanelview addSubview:currentstep];
+    UIButton *loginbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    loginbutton.frame = CGRectMake(40, 40, loginpanelview.frame.size.width-80,40);
+    loginbutton.backgroundColor = [UIColor colorWithRed:0.53 green:0.85 blue:0.35 alpha:0.8];
+    [loginbutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    loginbutton.layer.cornerRadius = 20.0;
+    
+    [loginbutton setTitle:@"暫時沒有優惠信息" forState:UIControlStateNormal];
+    
+    bottomgoalview = [[UIView alloc] initWithFrame:CGRectMake(0, loginpanelview.frame.size.height-40, loginpanelview.frame.size.width, 40)];
+    bottomgoalview.backgroundColor = [UIColor colorWithRed:0.85 green:0.38 blue:0.33 alpha:0.8];
+    
+    UILabel *receivediscount = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, bottomgoalview.frame.size.width, 19)];
+    receivediscount.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightThin];
+    receivediscount.text = [NSString stringWithFormat:@"會員專享優惠 - 即將推出"];
+    receivediscount.textAlignment = NSTextAlignmentCenter;
+    receivediscount.textColor = [UIColor whiteColor];
+    [bottomgoalview addSubview:receivediscount];
+    [loginpanelview addSubview:bottomgoalview];
+    
+    
+    [loginpanelview addSubview:loginbutton];
+    //[loginpanelview addSubview:totalsteplab];
+    //[loginpanelview addSubview:currentstep];
     [loginpanelview addSubview:welcomesnogen];
-    [loginpanelview addSubview:goalbar];
+    //[loginpanelview addSubview:goalbar];
 }
 -(void)memberlogin {
     [bottomgoalview removeFromSuperview];
@@ -233,6 +256,7 @@
     [loginpanelview addSubview:loginbutton];
     [loginpanelview addSubview:welcomesnogen];
 }
+/**
 -(void)readstepHK {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *interval = [[NSDateComponents alloc] init];
@@ -293,6 +317,7 @@
 -(IBAction)updatestep:(id)sender {
     [currentstep setText:sender];
 }
+*/
 -(void)adddicount {
     bottomgoalview = [[UIView alloc] initWithFrame:CGRectMake(0, loginpanelview.frame.size.height-40, loginpanelview.frame.size.width, 40)];
     bottomgoalview.backgroundColor = [UIColor colorWithRed:0.85 green:0.38 blue:0.33 alpha:0.8];
@@ -345,7 +370,7 @@
     webview.weblinkstring = @"https://www.follow-me.pro/weblogin.php";
     [self presentViewController:webview animated:NO completion:nil];
 }
-
+/*
 -(void)readdist {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *interval = [[NSDateComponents alloc] init];
@@ -398,6 +423,7 @@
     };
     [healthStore executeQuery:query];
 }
+ */
 -(void)createview {
     topview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curheigh/5)];
     topview.backgroundColor = [UIColor lightGrayColor];

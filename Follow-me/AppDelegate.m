@@ -10,7 +10,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Stripe/Stripe.h>
-#import <HealthKit/HealthKit.h>
+//#import <HealthKit/HealthKit.h>
 #import "SBJson.h"
 
 @interface AppDelegate ()

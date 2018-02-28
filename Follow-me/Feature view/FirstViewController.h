@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <HealthKit/HealthKit.h>
+//#import <HealthKit/HealthKit.h>
 #import "serviceurl.h"
 #import "UIImageView+WebCache.h"
 
@@ -21,7 +21,7 @@
     CGFloat curheigh;
     double rewardstep;
     double rewarddist;
-    HKHealthStore *healthStore;
+    //HKHealthStore *healthStore;
     double totalstep;
     double totaldist;
     UILabel *steplable;
