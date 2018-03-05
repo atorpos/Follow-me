@@ -204,8 +204,6 @@
 		49CE8A881FBC992500A29557 /* Stripe.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Stripe.bundle; sourceTree = SOURCE_ROOT; };
 		49CE8A891FBC992500A29557 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = SOURCE_ROOT; };
 		49CE8AA61FBCA25A00A29557 /* launchscreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launchscreen.jpg; path = GUI/launchscreen.jpg; sourceTree = SOURCE_ROOT; };
-		49CE8AA91FBCA2E700A29557 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = System/Library/Frameworks/HealthKitUI.framework; sourceTree = SDKROOT; };
 		49CE8AAD1FBCA30600A29557 /* Follow-me.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Follow-me.entitlements"; sourceTree = "<group>"; };
 		49F0EF7E1FC66AA90015EED8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
 		49F0EF7F1FC66AA90015EED8 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
@@ -520,8 +518,6 @@
 				49CE8A851FBC989B00A29557 /* Fabric.framework */,
 				49CE8A881FBC992500A29557 /* Stripe.bundle */,
 				49CE8A891FBC992500A29557 /* Stripe.framework */,
-				49CE8AA91FBCA2E700A29557 /* HealthKit.framework */,
-				49CE8AAA1FBCA2E700A29557 /* HealthKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -641,7 +637,7 @@
 								enabled = 1;
 							};
 							com.apple.HealthKit = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -1003,7 +999,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.altawoz.followme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "729060ec-0069-4c05-8029-bd3378a98f1e";
+				PROVISIONING_PROFILE = "5e66980b-4427-450b-9259-c616c92c67c5";
 				PROVISIONING_PROFILE_SPECIFIER = followme_dist;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

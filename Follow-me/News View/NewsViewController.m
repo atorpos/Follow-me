@@ -163,7 +163,11 @@
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
     NSLog(@"the page id %@", stringID);
-    
+    if ([json valueForKeyPath:@"object_id"] != nil) {
+        NSLog(@"larger than 0");
+    } else {
+        NSLog(@"it is zero");
+    }
     NSMutableArray *tempname = [[NSMutableArray alloc] initWithArray:contentname];
     contentname = nil;
     NSMutableArray *servername = [[NSMutableArray alloc] init];
