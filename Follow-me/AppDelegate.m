@@ -12,25 +12,35 @@
 #import <Stripe/Stripe.h>
 //#import <HealthKit/HealthKit.h>
 #import "SBJson.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
 @end
 
 @implementation AppDelegate
 
-
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
+    NSString * language = [[NSLocale preferredLanguages] firstObject];
+    //[self registerForRemoteNotifications]; //for the remote notification
+    //
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+        if(!error){
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+    }];
     
     // TODO: Replace with your own test publishable key
     // TODO: DEBUG ONLY! Remove / conditionalize before launch
     [Stripe setDefaultPublishableKey:@"pk_live_W9DfRAqvXM0UV2KVnax2fCUd"]; //testapi pk_test_uxUuoLZuOXfqprqOntgKspYl liveapi pk_live_W9DfRAqvXM0UV2KVnax2fCUd
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-    standarddefs = [NSUserDefaults standardUserDefaults];
     
+    standarddefs = [NSUserDefaults standardUserDefaults];
+    [standarddefs setObject:language forKey:@"systemlanguage"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     //initial_url = @"https://d3q3ok4iuja3c0.cloudfront.net/payload/initial_json.json";
@@ -69,8 +79,24 @@
     
     return YES;
 }
-
-
+/*
+- (void)registerForRemoteNotifications {
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if(!error){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else {
+        // Code for old versions
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    }
+}
+*/
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -112,7 +138,46 @@
     }
 }
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"%@", deviceToken);
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [standarddefs setObject:token forKey:@"devicetoken"];
+    if (![standarddefs objectForKey:@"readtoken"]) {
+        [self senttoken];
+    }
+    
+}
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"recived the notification");
+}
+-(void)senttoken{
+    NSString *posttoken = [NSString stringWithFormat:@"token=%@", [standarddefs objectForKey:@"devicetoken"]];
+    NSData *postdata = [posttoken dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *stringlength = [NSString stringWithFormat:@"%lu", (unsigned long)[posttoken length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString *qrcodequery = @"https://www.follow-me.info/access/getoken.php";
+    [request setURL:[NSURL URLWithString:qrcodequery]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:stringlength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postdata];
+    [request setTimeoutInterval:10.0];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (response &&! error) {
+            NSString *readtext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"QR %@", readtext);
+            if ([readtext isEqualToString:@"success"]) {
+                NSLog(@"success");
+                [standarddefs setObject:@"1" forKey:@"readtoken"];
+            } else {
+                NSLog(@"no value");
+            }
+        } else {
+        }
+    }];
+    
+    [task resume];
 }
 
 

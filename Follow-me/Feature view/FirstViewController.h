@@ -57,7 +57,12 @@
     LoginViewController *loginview;
     WebViewController *webview;
     UIView *bottomgoalview;
+    NSString *pagetitle;
+    NSString *welcometitle;
 }
+
+@property (nonatomic, retain) IBOutlet UIScrollView *pagescrollviewsecond;
+@property (nonatomic, retain) IBOutlet UIPageControl *pagecontrolsecond;
 
 @end
 

@@ -27,6 +27,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     standardUsers = [NSUserDefaults standardUserDefaults];
+    NSLog(@"language %@", [standardUsers objectForKey:@"systemlanguage"]);
+    if([[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hans-US"]) {
+        pagetitle = @"快乐猫";
+        welcometitle = @"欢迎";
+    } else if ([[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-US"] ||[[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-HK"] || [[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-TW"]) {
+        pagetitle = @"快樂猫";
+        welcometitle =@"歡迎";
+    } else {
+        pagetitle = @"Follow Me";
+        welcometitle = @"Welcome";
+    }
     if ([[standardUsers objectForKey:@"chooseitemid"] count] == 0) {
         [[super.tabBarController.viewControllers objectAtIndex:3] tabBarItem].badgeValue = nil;
     } else {
@@ -62,7 +73,7 @@
     NSLog(@"%f", curheigh);
     [self createui];
     
-    self.navigationController.navigationBar.topItem.title = @"快樂猫";
+    self.navigationController.navigationBar.topItem.title = pagetitle;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
