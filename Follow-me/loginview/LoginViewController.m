@@ -88,12 +88,20 @@
     [self.loginclick setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.loginclick addTarget:self action:@selector(loginclicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    UIButton *forgetpassword = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    forgetpassword.frame = CGRectMake(10, curheigh/4+150, curwidth-20, 40);
+    [forgetpassword setTitle:@"忘記密碼" forState:UIControlStateNormal];
+    [forgetpassword setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    
     [self.view addSubview:backgroundView];
     [self.view addSubview:cancelbutton];
     [self.view addSubview:self.loginclick];
     [self.view addSubview:textPassword];
     [self.view addSubview:Username];
     [self.view addSubview:signinlabel];
+    [self.view addSubview:forgetpassword];
     [self.view addGestureRecognizer:tap];
     //[self.view addSubview:navbar];
 }

@@ -85,6 +85,14 @@
 		733CD7E7202313BA00DC0458 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733CD7E6202313BA00DC0458 /* CheckoutViewController.m */; };
 		733D37A9201EF2C8008C1D14 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 733D37A8201EF2C8008C1D14 /* cart.png */; };
 		733D37AC201EF4FA008C1D14 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733D37AB201EF4FA008C1D14 /* CartViewController.m */; };
+		739976EE20624DE400993842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739976ED20624DE300993842 /* GoogleService-Info.plist */; };
+		739976F820624EE500993842 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F120624EE200993842 /* FirebaseAnalytics.framework */; };
+		739976F920624EE500993842 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F220624EE200993842 /* FirebaseNanoPB.framework */; };
+		739976FA20624EE500993842 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F320624EE200993842 /* FirebaseCoreDiagnostics.framework */; };
+		739976FB20624EE500993842 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F420624EE300993842 /* FirebaseInstanceID.framework */; };
+		739976FC20624EE500993842 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F520624EE300993842 /* FirebaseCore.framework */; };
+		739976FD20624EE500993842 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F620624EE400993842 /* nanopb.framework */; };
+		739976FE20624EE500993842 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F720624EE500993842 /* GoogleToolboxForMac.framework */; };
 		73C90FBC1FC3E6310008EE3F /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB71FC3E6300008EE3F /* home.png */; };
 		73C90FBD1FC3E6310008EE3F /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB81FC3E6300008EE3F /* search.png */; };
 		73C90FBE1FC3E6310008EE3F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C90FB91FC3E6300008EE3F /* user.png */; };
@@ -250,6 +258,15 @@
 		733D37A8201EF2C8008C1D14 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		733D37AA201EF4FA008C1D14 /* CartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		733D37AB201EF4FA008C1D14 /* CartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		739976ED20624DE300993842 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		739976F020624EC000993842 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		739976F120624EE200993842 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		739976F220624EE200993842 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		739976F320624EE200993842 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		739976F420624EE300993842 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		739976F520624EE300993842 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		739976F620624EE400993842 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
+		739976F720624EE500993842 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		73C90FB71FC3E6300008EE3F /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = "Follow-me/GUI/home.png"; sourceTree = SOURCE_ROOT; };
 		73C90FB81FC3E6300008EE3F /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = "Follow-me/GUI/search.png"; sourceTree = SOURCE_ROOT; };
 		73C90FB91FC3E6300008EE3F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = "Follow-me/GUI/user.png"; sourceTree = SOURCE_ROOT; };
@@ -266,8 +283,15 @@
 			files = (
 				49F0EFA91FC6C4DB0015EED8 /* MapKit.framework in Frameworks */,
 				49F0EFA71FC6C4BD0015EED8 /* CoreLocation.framework in Frameworks */,
+				739976FD20624EE500993842 /* nanopb.framework in Frameworks */,
+				739976F820624EE500993842 /* FirebaseAnalytics.framework in Frameworks */,
 				49CE8A861FBC989B00A29557 /* Crashlytics.framework in Frameworks */,
+				739976FB20624EE500993842 /* FirebaseInstanceID.framework in Frameworks */,
 				49CE8A871FBC989B00A29557 /* Fabric.framework in Frameworks */,
+				739976FC20624EE500993842 /* FirebaseCore.framework in Frameworks */,
+				739976FA20624EE500993842 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				739976FE20624EE500993842 /* GoogleToolboxForMac.framework in Frameworks */,
+				739976F920624EE500993842 /* FirebaseNanoPB.framework in Frameworks */,
 				49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +401,7 @@
 		49CE8A421FBC97FD00A29557 = {
 			isa = PBXGroup;
 			children = (
+				739976EF20624EA400993842 /* Firebase */,
 				498B0F9E200920210039F4DD /* SD Image */,
 				49CE8A8C1FBC9AD300A29557 /* SBJSON */,
 				49CE8A4D1FBC97FD00A29557 /* Follow-me */,
@@ -425,6 +450,7 @@
 				49CE8A571FBC97FD00A29557 /* Main.storyboard */,
 				49CE8A5A1FBC97FD00A29557 /* Assets.xcassets */,
 				49CE8A5C1FBC97FD00A29557 /* LaunchScreen.storyboard */,
+				739976ED20624DE300993842 /* GoogleService-Info.plist */,
 				49CE8A5F1FBC97FD00A29557 /* Info.plist */,
 				49CE8A601FBC97FD00A29557 /* main.m */,
 				49CE8AA51FBCA19F00A29557 /* GUI */,
@@ -565,6 +591,21 @@
 			path = CartView;
 			sourceTree = "<group>";
 		};
+		739976EF20624EA400993842 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				739976F120624EE200993842 /* FirebaseAnalytics.framework */,
+				739976F520624EE300993842 /* FirebaseCore.framework */,
+				739976F320624EE200993842 /* FirebaseCoreDiagnostics.framework */,
+				739976F420624EE300993842 /* FirebaseInstanceID.framework */,
+				739976F220624EE200993842 /* FirebaseNanoPB.framework */,
+				739976F720624EE500993842 /* GoogleToolboxForMac.framework */,
+				739976F620624EE400993842 /* nanopb.framework */,
+				739976F020624EC000993842 /* Firebase.h */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -700,6 +741,7 @@
 				49133A361FFEAEFD0088E7C9 /* ad.jpg in Resources */,
 				73C90FBD1FC3E6310008EE3F /* search.png in Resources */,
 				497686552022308C001BDE60 /* success@2x.png in Resources */,
+				739976EE20624DE400993842 /* GoogleService-Info.plist in Resources */,
 				49CE8A5E1FBC97FD00A29557 /* LaunchScreen.storyboard in Resources */,
 				73C90FC01FC3E6310008EE3F /* bookmark.png in Resources */,
 				4967E07B202CC29A00A77956 /* login@2x.png in Resources */,
@@ -910,6 +952,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -959,6 +1005,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -974,6 +1024,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Firebase",
 				);
 				INFOPLIST_FILE = "Follow-me/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -997,6 +1048,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Firebase",
 				);
 				INFOPLIST_FILE = "Follow-me/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

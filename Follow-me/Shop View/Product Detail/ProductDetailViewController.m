@@ -175,10 +175,12 @@
 -(void)fetchproducts:(NSData *)responseData {
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
-    
+    NSLog(@"json %@", json);
     readtext = [[json valueForKey:@"post_title"] objectAtIndex:0];
     mainimgurl = [[json valueForKeyPath:@"imgurl"] objectAtIndex:0];
-    galleryurl = [[json valueForKeyPath:@"galleryurl"]objectAtIndex:0];
+    if([[json valueForKeyPath:@"galleryurl"]objectAtIndex:0]) {
+        galleryurl = [[json valueForKeyPath:@"galleryurl"]objectAtIndex:0];
+    }
     productdescriptions = [[json valueForKeyPath:@"shorttitle"] objectAtIndex:0];
     stocks = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_stock"] objectAtIndex:0];
     productweight = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_weight"] objectAtIndex:0];
@@ -191,9 +193,16 @@
     stock_status = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_stock_status"] objectAtIndex:0];
     productrating = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_wc_average_rating"] objectAtIndex:0];
     noofrating = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_wc_review_count"] objectAtIndex:0];
-    NSLog(@"stock %@", noofrating);
+    if([galleryurl count] > 0) {
+        
+    } else {
+        [self loadingoneimg];
+    }
     
     [maintableview reloadData];
+    
+}
+-(void)loadingoneimg {
     
 }
 
@@ -306,21 +315,57 @@
                     [addview addSubview:ratingview];
                     [addview addSubview:producname];
                     [cell.contentView addSubview:addview];
-                }
                     break;
+                }
+                    
                     
                 case 1:
                 {
-                    UIImageView *testview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth/4*3)];
-                    [testview sd_setImageWithURL:[NSURL URLWithString:mainimgurl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-                    //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-                    imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
                     
-                    testview.contentMode = UIViewContentModeScaleAspectFill;
-                    testview.clipsToBounds = YES;
-                    [cell.contentView addSubview:testview];
-                }
+                    [heroimgview removeFromSuperview];
+                    if(!galleryurl) {
+                        heroimgview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth/4*3)];
+                        UIImageView *testview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth/4*3)];
+                        [testview sd_setImageWithURL:[NSURL URLWithString:mainimgurl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                        //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                        imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
+                        
+                        testview.contentMode = UIViewContentModeScaleAspectFill;
+                        testview.clipsToBounds = YES;
+                        [heroimgview addSubview:testview];
+                    } else {
+                        if([galleryurl count] > 0) {
+                            int i;
+                            NSInteger noofpic = [galleryurl count];
+                            heroimgview = [[UIScrollView alloc] init];
+                            heroimgview.frame = CGRectMake(0, 0, curwidth, curwidth/4*3);
+                            heroimgview.contentSize = CGSizeMake(curwidth*(noofpic+1), curwidth/4*3);
+                            heroimgview.scrollEnabled = YES;
+                            heroimgview.pagingEnabled = YES;
+                            heroimgview.delegate = self;
+                            heroimgview.clipsToBounds = YES;
+                            heroimgview.backgroundColor = [UIColor whiteColor];
+                            
+                            UIImageView *testview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth/4*3)];
+                            [testview sd_setImageWithURL:[NSURL URLWithString:mainimgurl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                            //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                            imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
+                            
+                            testview.contentMode = UIViewContentModeScaleAspectFill;
+                            testview.clipsToBounds = YES;
+                            [heroimgview addSubview:testview];
+                            
+                            for (i=0; i<[galleryurl count]; i++) {
+                                [self performSelectorOnMainThread:@selector(createview:) withObject:[NSString stringWithFormat:@"%d", i] waitUntilDone:YES];
+                            }
+                            //[self performSelector:@selector(createview:) withObject:[NSString stringWithFormat:@"%lu", (unsigned long)[galleryurl count]] afterDelay:0];
+                        }
+                    }
+                    [cell.contentView addSubview:heroimgview];
+                    NSLog(@"the contentview %f", heroimgview.contentSize.width);
                     break;
+                }
+                    
                 case 2:{
                     addview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, 60)];
                     NSLog(@"Regualr price %lu and price %@", (unsigned long)regularprice.length, price);
@@ -342,13 +387,15 @@
                         iteminstock.textColor = [UIColor colorWithRed:0.73 green:0.18 blue:0.23 alpha:0.8];
                     }
                     [addview addSubview:iteminstock];
-                    [cell.contentView addSubview:addview];}
+                    [cell.contentView addSubview:addview];
+                    
+                }
                     break;
             }
             
         }
         if(indexPath.section == 0) {
-            cell.userInteractionEnabled = NO;
+            cell.userInteractionEnabled = YES;
         } else {
             cell.userInteractionEnabled = YES;
         }
@@ -356,6 +403,19 @@
     }
     
     return cell;
+}
+-(void)createview:(NSString*)sendervalue {
+    
+    NSInteger objinx = [sendervalue integerValue];
+    NSLog(@"count %lu - %ld", (unsigned long)[galleryurl count], (long)objinx);
+    UIImageView *testview = [[UIImageView alloc] initWithFrame:CGRectMake(curwidth*(objinx+1), 0, curwidth, curwidth/4*3)];
+    [testview sd_setImageWithURL:[NSURL URLWithString:[galleryurl objectAtIndex:objinx]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
+    
+    testview.contentMode = UIViewContentModeScaleAspectFill;
+    testview.clipsToBounds = YES;
+    [heroimgview addSubview:testview];
 }
 -(void)showspecialprice {
     UILabel *regular_label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 19)];

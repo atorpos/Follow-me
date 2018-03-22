@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
 @class ProductDetailWebViewController;
-@interface ProductDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ProductDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 {
     IBOutlet UITableView *maintableview;
     CGFloat curwidth;
@@ -34,6 +34,7 @@
     UIImage *ratingimage;
     UIView *addview;
     NSData *imagdata;
+    UIScrollView *heroimgview;
     ProductDetailWebViewController *productdetailwebview;
 }
 

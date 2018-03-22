@@ -29,14 +29,20 @@
     standardUsers = [NSUserDefaults standardUserDefaults];
     NSLog(@"language %@", [standardUsers objectForKey:@"systemlanguage"]);
     if([[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hans-US"]) {
-        pagetitle = @"快乐猫";
-        welcometitle = @"欢迎";
+        //pagetitle = @"快乐猫";
+        //welcometitle = @"欢迎";
+        pagetitle = @"快樂猫";
+        welcometitle =@"歡迎";
+
     } else if ([[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-US"] ||[[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-HK"] || [[standardUsers objectForKey:@"systemlanguage"] isEqualToString:@"zh-Hant-TW"]) {
         pagetitle = @"快樂猫";
         welcometitle =@"歡迎";
     } else {
-        pagetitle = @"Follow Me";
-        welcometitle = @"Welcome";
+        //pagetitle = @"Follow Me";
+        //welcometitle = @"Welcome";
+        pagetitle = @"快樂猫";
+        welcometitle =@"歡迎";
+
     }
     if ([[standardUsers objectForKey:@"chooseitemid"] count] == 0) {
         [[super.tabBarController.viewControllers objectAtIndex:3] tabBarItem].badgeValue = nil;

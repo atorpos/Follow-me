@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
+#import "Firebase.h"
+
+@import FirebaseCore;
+@import FirebaseAnalytics;
+@import FirebaseInstanceID;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     NSString *initial_url;
