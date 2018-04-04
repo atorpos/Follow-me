@@ -85,6 +85,8 @@
 		733CD7E7202313BA00DC0458 /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733CD7E6202313BA00DC0458 /* CheckoutViewController.m */; };
 		733D37A9201EF2C8008C1D14 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 733D37A8201EF2C8008C1D14 /* cart.png */; };
 		733D37AC201EF4FA008C1D14 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733D37AB201EF4FA008C1D14 /* CartViewController.m */; };
+		7373B3822068CF030036D876 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7373B3802068CF020036D876 /* Protobuf.framework */; };
+		7373B3832068CF030036D876 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7373B3812068CF020036D876 /* FirebaseMessaging.framework */; };
 		739976EE20624DE400993842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739976ED20624DE300993842 /* GoogleService-Info.plist */; };
 		739976F820624EE500993842 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F120624EE200993842 /* FirebaseAnalytics.framework */; };
 		739976F920624EE500993842 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739976F220624EE200993842 /* FirebaseNanoPB.framework */; };
@@ -258,6 +260,8 @@
 		733D37A8201EF2C8008C1D14 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		733D37AA201EF4FA008C1D14 /* CartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		733D37AB201EF4FA008C1D14 /* CartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		7373B3802068CF020036D876 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Protobuf.framework; sourceTree = "<group>"; };
+		7373B3812068CF020036D876 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = ../../../../Downloads/Firebase/Messaging/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		739976ED20624DE300993842 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		739976F020624EC000993842 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		739976F120624EE200993842 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -289,8 +293,10 @@
 				739976FB20624EE500993842 /* FirebaseInstanceID.framework in Frameworks */,
 				49CE8A871FBC989B00A29557 /* Fabric.framework in Frameworks */,
 				739976FC20624EE500993842 /* FirebaseCore.framework in Frameworks */,
+				7373B3832068CF030036D876 /* FirebaseMessaging.framework in Frameworks */,
 				739976FA20624EE500993842 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				739976FE20624EE500993842 /* GoogleToolboxForMac.framework in Frameworks */,
+				7373B3822068CF030036D876 /* Protobuf.framework in Frameworks */,
 				739976F920624EE500993842 /* FirebaseNanoPB.framework in Frameworks */,
 				49CE8A8B1FBC992500A29557 /* Stripe.framework in Frameworks */,
 			);
@@ -594,6 +600,8 @@
 		739976EF20624EA400993842 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				7373B3812068CF020036D876 /* FirebaseMessaging.framework */,
+				7373B3802068CF020036D876 /* Protobuf.framework */,
 				739976F120624EE200993842 /* FirebaseAnalytics.framework */,
 				739976F520624EE300993842 /* FirebaseCore.framework */,
 				739976F320624EE200993842 /* FirebaseCoreDiagnostics.framework */,

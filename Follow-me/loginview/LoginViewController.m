@@ -93,7 +93,7 @@
     forgetpassword.frame = CGRectMake(10, curheigh/4+150, curwidth-20, 40);
     [forgetpassword setTitle:@"忘記密碼" forState:UIControlStateNormal];
     [forgetpassword setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
+    [forgetpassword addTarget:self action:@selector(forgetpassword:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:backgroundView];
     [self.view addSubview:cancelbutton];
@@ -117,6 +117,11 @@
     //mainController = (ViewController *)self.parentViewController;
     webview = [self.storyboard instantiateViewControllerWithIdentifier:@"webview"];
     webview.weblinkstring = @"https://www.follow-me.pro/weblogin.php";
+    [self presentViewController:webview animated:NO completion:nil];
+}
+-(IBAction)forgetpassword:(id)sender {
+    webview = [self.storyboard instantiateViewControllerWithIdentifier:@"webview"];
+    webview.weblinkstring = @"https://www.follow-me.pro/?page_id=9&lost-password&v=5995289c850f";
     [self presentViewController:webview animated:NO completion:nil];
 }
 -(IBAction)cancelpage:(id)sender {

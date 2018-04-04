@@ -25,6 +25,7 @@
     // Override point for customization after application launch.
     [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
     [FIRApp configure];
+    [FIRMessaging messaging].delegate = self;
     NSString * language = [[NSLocale preferredLanguages] firstObject];
     //[self registerForRemoteNotifications]; //for the remote notification
     //
@@ -78,7 +79,8 @@
     //    json = [NSJSONSerialization JSONObjectWithData:urlData_fav options:kNilOptions error:&error];
     //    NSLog(@"%@-%lu", [json objectForKey:@"name"],[[json objectForKey:@"front_image_local"] count]); //READ INITIAL JSON FILE, IT CAN UPDATE IT AUTOMATICAL AFTERWARE
     //}
-    
+    NSString *fcmToken = [FIRMessaging messaging].FCMToken;
+    NSLog(@"FCM registration token: %@", fcmToken);
     
     return YES;
 }

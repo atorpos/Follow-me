@@ -13,8 +13,8 @@
 @import FirebaseCore;
 @import FirebaseAnalytics;
 @import FirebaseInstanceID;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+@import FirebaseMessaging;
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FIRMessagingDelegate> {
     NSString *initial_url;
     NSUserDefaults *standarddefs;
     NSDictionary *json;
