@@ -179,16 +179,16 @@
                     NSString *responsedata = [[NSString alloc] initWithData: data encoding:NSUTF8StringEncoding];
                     NSLog(@"response ==> %@", responsedata);
                     SBJsonParser *jsonParser = [SBJsonParser new];
-                    jsonData = (NSDictionary *) [jsonParser objectWithString:responsedata error:nil];
-                    NSLog(@"%@", jsonData);
-                    success = [(NSNumber *) [jsonData objectForKey:@"logresponse"] integerValue];
-                    NSLog(@"%ld",(long)success);
-                    if (success == 1) {
+                    self->jsonData = (NSDictionary *) [jsonParser objectWithString:responsedata error:nil];
+                    NSLog(@"%@", self->jsonData);
+                    self->success = [(NSNumber *) [self->jsonData objectForKey:@"logresponse"] integerValue];
+                    NSLog(@"%ld",(long)self->success);
+                    if (self->success == 1) {
                         NSLog(@"Login Succes");
-                        [standarddefault setObject:[jsonData objectForKey:@"user_login"] forKey:@"username"];
-                        [standarddefault setObject:[jsonData objectForKey:@"display_name"] forKey:@"display_name"];
-                        [standarddefault setObject:[jsonData objectForKey:@"ID"] forKey:@"user_ID"];
-                        [standarddefault setObject:[jsonData objectForKey:@"user_email"] forKey:@"useremail"];
+                        [standarddefault setObject:[self->jsonData objectForKey:@"user_login"] forKey:@"username"];
+                        [standarddefault setObject:[self->jsonData objectForKey:@"display_name"] forKey:@"display_name"];
+                        [standarddefault setObject:[self->jsonData objectForKey:@"ID"] forKey:@"user_ID"];
+                        [standarddefault setObject:[self->jsonData objectForKey:@"user_email"] forKey:@"useremail"];
                         //[self alertStatus:@"Login successful" :@"Login Good!"];
                         [self dismissViewControllerAnimated:NO completion:nil];
                     }else {

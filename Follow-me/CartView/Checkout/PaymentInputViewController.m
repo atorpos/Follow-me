@@ -268,9 +268,9 @@
              NSLog(@"token %@", token);
              // TODO: send the token to your server so it can create a charge
              NSString *stripeAPI = @"sk_live_l2DDUGECfaw9i4hTmZ36ydyQ";
-             NSString *float2 = [NSString stringWithFormat:@"%.2f", [totalamount doubleValue]];
+             NSString *float2 = [NSString stringWithFormat:@"%.2f", [self->totalamount doubleValue]];
              NSString *chargevalue = [float2 stringByReplacingOccurrencesOfString:@"." withString:@""];
-             NSString *poststring = [NSString stringWithFormat:@"stripeToken=%@&paymentamount=%@&paymentcurrency=hkd&stripeAPI=%@&email=%@&pnumber=%@&shipstreet=%@&shipcity=%@&shipstate=%@&shippostal=%@&shipcountry=%@&firstname=%@&lastname=%@&transdetail=%@&cartdisc=%.2f&combincost=%@&combinqty=%@",token, chargevalue, stripeAPI, shipemail, shipphone, shipstreet, shiptcity, shipstate, shippostal, shipcountry, firstname, lastname,combinateresult,[discountamount doubleValue],combinatecost, combinateqty];
+             NSString *poststring = [NSString stringWithFormat:@"stripeToken=%@&paymentamount=%@&paymentcurrency=hkd&stripeAPI=%@&email=%@&pnumber=%@&shipstreet=%@&shipcity=%@&shipstate=%@&shippostal=%@&shipcountry=%@&firstname=%@&lastname=%@&transdetail=%@&cartdisc=%.2f&combincost=%@&combinqty=%@",token, chargevalue, stripeAPI, self->shipemail, self->shipphone, self->shipstreet, self->shiptcity, self->shipstate, self->shippostal, self->shipcountry, self->firstname, self->lastname,self->combinateresult,[self->discountamount doubleValue],self->combinatecost, self->combinateqty];
              
              //sent to webserver
              NSData *postData = [poststring dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];

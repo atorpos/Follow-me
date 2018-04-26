@@ -60,9 +60,9 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (response &&! error) {
-            readtext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            self->readtext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
-            if (![readtext isEqualToString:@"no value"]) {
+            if (![self->readtext isEqualToString:@"no value"]) {
                 [self performSelectorOnMainThread:@selector(fetchproducts:) withObject:data waitUntilDone:YES];
             } else {
                 NSLog(@"no value");

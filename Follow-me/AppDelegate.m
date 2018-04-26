@@ -174,7 +174,7 @@
             NSLog(@"QR %@", readtext);
             if ([readtext isEqualToString:@"success"]) {
                 NSLog(@"success");
-                [standarddefs setObject:@"1" forKey:@"readtoken"];
+                [self->standarddefs setObject:@"1" forKey:@"readtoken"];
             } else {
                 NSLog(@"no value");
             }

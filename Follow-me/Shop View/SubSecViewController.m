@@ -63,9 +63,9 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (response &&! error) {
-            readtext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            self->readtext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
-            if (![readtext isEqualToString:@"no value"]) {
+            if (![self->readtext isEqualToString:@"no value"]) {
                 if(loadpage == 0) {
                     [self performSelectorOnMainThread:@selector(fetchproducts:) withObject:data waitUntilDone:YES];
                 } else {
@@ -88,7 +88,8 @@
     regularprice = [[[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"meta"]valueForKeyPath:@"_regular_price"] objectAtIndex:0];
     saleprice = [[[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"meta"]valueForKeyPath:@"_price"] objectAtIndex:0];
     imgurl = [[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"imgurl"] objectAtIndex:0];
-    tecrating = [[[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"meta"]valueForKeyPath:@"_wc_average_rating"] objectAtIndex:0];    NSLog(@"first ns log %@",regularprice);
+    tecrating = [[[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"meta"]valueForKeyPath:@"_wc_average_rating"] objectAtIndex:0];
+    NSLog(@"first ns log %@",saleprice);
     productid = [[[json valueForKeyPath:@"object_id"] valueForKeyPath:@"ID"] objectAtIndex:0];
     //NSLog(@"%@", [[productnamearray objectAtIndex:1] objectAtIndex:0]);
     [self creatview];

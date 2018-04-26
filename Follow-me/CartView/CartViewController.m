@@ -243,9 +243,9 @@
             NSLog(@"yes token %@", token);
             NSLog(@"token %@", payment.shippingContact.postalAddress);
             NSString *stripeAPI = @"sk_live_l2DDUGECfaw9i4hTmZ36ydyQ"; //testapi sk_test_lDL5DW1w3bn10dusvalBBz4D, public api sk_live_l2DDUGECfaw9i4hTmZ36ydyQ
-            NSString *float2 = [NSString stringWithFormat:@"%.2f", invtotal];
+            NSString *float2 = [NSString stringWithFormat:@"%.2f", self->invtotal];
             NSString *chargevalue = [float2 stringByReplacingOccurrencesOfString:@"." withString:@""];
-            NSString *poststring = [NSString stringWithFormat:@"stripeToken=%@&paymentamount=%@&paymentcurrency=hkd&stripeAPI=%@&email=%@&pnumber=%@&shipstreet=%@&shipcity=%@&shipstate=%@&shippostal=%@&shipcountry=%@&firstname=%@&lastname=%@&transdetail=%@&cartdisc=%.2f&combincost=%@&combinqty=%@",token, chargevalue, stripeAPI, payment.shippingContact.emailAddress, [payment.shippingContact.phoneNumber valueForKey:@"digits"], payment.shippingContact.postalAddress.street,payment.shippingContact.postalAddress.city,payment.shippingContact.postalAddress.state,payment.shippingContact.postalAddress.postalCode,payment.shippingContact.postalAddress.country,payment.shippingContact.name.givenName,payment.shippingContact.name.familyName,combinatedid,discount,combinatecost,combinateqty];
+            NSString *poststring = [NSString stringWithFormat:@"stripeToken=%@&paymentamount=%@&paymentcurrency=hkd&stripeAPI=%@&email=%@&pnumber=%@&shipstreet=%@&shipcity=%@&shipstate=%@&shippostal=%@&shipcountry=%@&firstname=%@&lastname=%@&transdetail=%@&cartdisc=%.2f&combincost=%@&combinqty=%@",token, chargevalue, stripeAPI, payment.shippingContact.emailAddress, [payment.shippingContact.phoneNumber valueForKey:@"digits"], payment.shippingContact.postalAddress.street,payment.shippingContact.postalAddress.city,payment.shippingContact.postalAddress.state,payment.shippingContact.postalAddress.postalCode,payment.shippingContact.postalAddress.country,payment.shippingContact.name.givenName,payment.shippingContact.name.familyName,self->combinatedid,self->discount,self->combinatecost,self->combinateqty];
             
             NSData *postData = [poststring dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[poststring length]];
@@ -280,13 +280,13 @@
                     } else {
                         NSLog(@"Transition has been rejected");
                         dispatch_async(dispatch_get_main_queue(), ^(void){
-                            alertview = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, curwidth, 40)];
-                            alertview.backgroundColor = [UIColor colorWithRed:0.96 green:0.28 blue:0.28 alpha:0.6];
-                            alertview.text = @"Transition Error";
-                            alertview.textColor = [UIColor whiteColor];
-                            alertview.textAlignment = NSTextAlignmentCenter;
-                            alertview.font = [UIFont systemFontOfSize:13];
-                            [self.view addSubview:alertview];
+                            self->alertview = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, self->curwidth, 40)];
+                            self->alertview.backgroundColor = [UIColor colorWithRed:0.96 green:0.28 blue:0.28 alpha:0.6];
+                            self->alertview.text = @"Transition Error";
+                            self->alertview.textColor = [UIColor whiteColor];
+                            self->alertview.textAlignment = NSTextAlignmentCenter;
+                            self->alertview.font = [UIFont systemFontOfSize:13];
+                            [self.view addSubview:self->alertview];
                             [self performSelector:@selector(popuphide) withObject:self afterDelay:4];
                             completion(PKPaymentAuthorizationStatusFailure);
                         });
@@ -295,13 +295,13 @@
                 } else {
                     NSLog(@"Fail: %@", error);
                     dispatch_async(dispatch_get_main_queue(), ^(void){
-                        alertview = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, curwidth, 40)];
-                        alertview.backgroundColor = [UIColor colorWithRed:0.96 green:0.28 blue:0.28 alpha:0.6];
-                        alertview.text = @"Transition Error";
-                        alertview.textColor = [UIColor whiteColor];
-                        alertview.textAlignment = NSTextAlignmentCenter;
-                        alertview.font = [UIFont systemFontOfSize:13];
-                        [self.view addSubview:alertview];
+                        self->alertview = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, self->curwidth, 40)];
+                        self->alertview.backgroundColor = [UIColor colorWithRed:0.96 green:0.28 blue:0.28 alpha:0.6];
+                        self->alertview.text = @"Transition Error";
+                        self->alertview.textColor = [UIColor whiteColor];
+                        self->alertview.textAlignment = NSTextAlignmentCenter;
+                        self->alertview.font = [UIFont systemFontOfSize:13];
+                        [self.view addSubview:self->alertview];
                         [self performSelector:@selector(popuphide) withObject:self afterDelay:4];
                         completion(PKPaymentAuthorizationStatusFailure);
                     });
