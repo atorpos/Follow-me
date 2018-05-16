@@ -441,6 +441,8 @@
     [healthStore executeQuery:query];
 }
  */
+
+
 -(void)createview {
     topview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curheigh/5)];
     topview.backgroundColor = [UIColor lightGrayColor];

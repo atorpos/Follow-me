@@ -13,6 +13,7 @@
 #define HEADER_SHOP_URL           @"https://www.follow-me.pro/parsejson.php"
 #define HEADER_FEAT_URL           @"https://www.follow-me.pro/featurejson.php"
 #define HEADER_TRACK_URL          @"https://www.follow-me.pro/track.php"
+#define HEADER_ADS_URL            @"https://www.follow-me.pro/ads.php"
 
 #define NOTIFY_MTU 20
 
