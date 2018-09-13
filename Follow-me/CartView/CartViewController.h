@@ -38,8 +38,11 @@
     NSMutableArray *cartprice;
     SuccessViewController *successview;
     CheckoutViewController *checkview;
-    
-    
+    NSString *productname;
+    NSString *productquantity;
+    NSInteger chooseindex;
+    UITextField *quantityfield;
+    int tempquantity;
 }
 @property (nonatomic, retain) NSString *transcationcomplicated;
 @end

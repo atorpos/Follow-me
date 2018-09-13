@@ -52,6 +52,10 @@
     NSArray *featproductimg;
     NSArray *featproductid;
     NSArray *featproductexcep;
+    NSArray *adstype;
+    NSArray *adimgurl;
+    NSArray *adtarget;
+    NSArray *adpayload;
     ProductDetailViewController *productview;
     NewsDetailViewController *newsview;
     LoginViewController *loginview;

@@ -112,10 +112,11 @@
     [self.view addSubview:cartview];
 }
 -(IBAction)senttobucket:(id)sender {
-    UIButton *passvalue = (UIButton *)sender;
-    NSLog(@"%ld",(long)passvalue.tag);
-    switch (passvalue.tag) {
-        case 0:
+    if (detailtitle) {
+        UIButton *passvalue = (UIButton *)sender;
+        NSLog(@"%ld",(long)passvalue.tag);
+        switch (passvalue.tag) {
+            case 0:
             {
                 NSLog(@"select to cart");
                 if([defaults objectForKey:@"chooseitemid"]) {
@@ -145,9 +146,9 @@
                             }
                         }
                         [defaults setObject:temppostno forKey:@"chooseitemno"];
-                        NSLog(@"%@", [defaults objectForKey:@"chooseitemno"]);
+                        NSLog(@"%@ %@ %@", [defaults objectForKey:@"chooseitemno"], [defaults objectForKey:@"chooseitemprice"], [defaults objectForKey:@"choseitemtitle"]);
                     }
-                   
+                    
                 } else {
                     NSLog(@"just one");
                     NSMutableArray *temppostidarray = [[NSMutableArray alloc] initWithObjects:postid, nil];
@@ -164,13 +165,15 @@
                 
                 [[super.tabBarController.viewControllers objectAtIndex:3] tabBarItem].badgeValue = [NSString stringWithFormat:@"%lu", [[defaults objectForKey:@"chooseitemid"] count]];
             }
-            break;
-        case 1:
-            NSLog(@"slect to list");
-            break;
-        default:
-            break;
+                break;
+            case 1:
+                NSLog(@"slect to list");
+                break;
+            default:
+                break;
+        }
     }
+    
 }
 -(void)fetchproducts:(NSData *)responseData {
     NSError *error;
@@ -181,6 +184,7 @@
     if([[json valueForKeyPath:@"galleryurl"]objectAtIndex:0]) {
         galleryurl = [[json valueForKeyPath:@"galleryurl"]objectAtIndex:0];
     }
+    detailtitle = [[json valueForKeyPath:@"post_title"] objectAtIndex:0];
     productdescriptions = [[json valueForKeyPath:@"shorttitle"] objectAtIndex:0];
     stocks = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_stock"] objectAtIndex:0];
     productweight = [[[json valueForKeyPath:@"meta"] valueForKeyPath:@"_weight"] objectAtIndex:0];
@@ -330,7 +334,7 @@
                         //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
                         imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
                         
-                        testview.contentMode = UIViewContentModeScaleAspectFill;
+                        testview.contentMode = UIViewContentModeScaleAspectFit;
                         testview.clipsToBounds = YES;
                         [heroimgview addSubview:testview];
                     } else {
@@ -351,7 +355,7 @@
                             //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
                             imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
                             
-                            testview.contentMode = UIViewContentModeScaleAspectFill;
+                            testview.contentMode = UIViewContentModeScaleAspectFit;
                             testview.clipsToBounds = YES;
                             [heroimgview addSubview:testview];
                             
@@ -413,7 +417,7 @@
     //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:[productimg objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     imagdata = [NSData dataWithContentsOfURL:[NSURL URLWithString:mainimgurl]];
     
-    testview.contentMode = UIViewContentModeScaleAspectFill;
+    testview.contentMode = UIViewContentModeScaleAspectFit;
     testview.clipsToBounds = YES;
     [heroimgview addSubview:testview];
 }

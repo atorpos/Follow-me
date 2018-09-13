@@ -76,6 +76,11 @@
     featproductname = [[NSArray alloc] init];
     featproductprice = [[NSArray alloc] init];
     featproductexcep = [[NSArray alloc] init];
+    adstype = [[NSArray alloc] init];
+    adimgurl = [[NSArray alloc] init];
+    adtarget = [[NSArray alloc] init];
+    adpayload = [[NSArray alloc] init];
+    
     NSLog(@"%f", curheigh);
     [self createui];
     
@@ -100,12 +105,15 @@
     NSURL *medianewurl = [NSURL URLWithString:HEADER_MEDIA_URL];
     NSURL *shopurl = [NSURL URLWithString:HEADER_SHOP_URL];
     NSURL *feaurl = [NSURL URLWithString:HEADER_FEAT_URL];
+    NSURL *adsurl = [NSURL URLWithString:HEADER_ADS_URL];
     NSData *mediadata = [NSData dataWithContentsOfURL:medianewurl];
     NSData *shopdata = [NSData dataWithContentsOfURL:shopurl];
     NSData *feadata = [NSData dataWithContentsOfURL:feaurl];
+    NSData *adsdata = [NSData dataWithContentsOfURL:adsurl];
     [self performSelectorOnMainThread:@selector(fetchnews:) withObject:mediadata waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(fetchshop:) withObject:shopdata waitUntilDone:NO];
     [self performSelectorOnMainThread:@selector(fetchfav:) withObject:feadata waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(fetchads:) withObject:adsdata waitUntilDone:NO];
     totaldist = 0;
     totalstep = 0;
     /*
@@ -175,6 +183,15 @@
     storeproductexcep = [json valueForKeyPath:@"post_excerpt"];
     NSLog(@"store %@", storeproductname);
     [self pl_productpanelview];
+}
+-(void)fetchads:(NSData *) responseData {
+    NSError *error;
+    NSDictionary *adsjson = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    adtarget = [adsjson valueForKeyPath:@"ID"];
+    adimgurl = [adsjson valueForKeyPath:@"imgurl"];
+    adstype = [adsjson valueForKeyPath:@"type"];
+    adpayload = [adsjson valueForKeyPath:@"payload"];
+    [self ad_panelview];
 }
 -(void)getthestep:(double)sender {
     double precentage = totaldist/rewarddist;
@@ -373,6 +390,11 @@
     productview.postcontent = featproductexcep[passvalue.tag];
     [self.navigationController pushViewController:productview animated:YES];
 }
+-(IBAction)QMethod:(id)sender {
+    productview = [self.storyboard instantiateViewControllerWithIdentifier:@"ProductDetailView"];
+    productview.postid = [adtarget objectAtIndex:0];
+    [self.navigationController pushViewController:productview animated:YES];
+}
 -(IBAction)aMethod:(id)sender {
     UIButton *passvalue = (UIButton *)sender;
     productview = [self.storyboard instantiateViewControllerWithIdentifier:@"ProductDetailView"];
@@ -452,24 +474,9 @@
     topview.layer.shadowOpacity = 0.6f;
     topview.layer.masksToBounds = NO;
     
-    UIImageView *welcomeview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, topview.frame.size.width, topview.frame.size.height)];
-    UIImage *welcomeimage = [UIImage imageNamed:@"welcome.jpg"];
-    welcomeview.contentMode = UIViewContentModeScaleAspectFill;
-    [welcomeview setImage:welcomeimage];
-    
-    [topview addSubview:welcomeview];
-    
-    //adview banner only for the ad
     
     adbannerview = [[UIView alloc] initWithFrame:CGRectMake(5, curheigh/5+5, curwidth-10, 64)];
     adbannerview.backgroundColor = [UIColor lightGrayColor];
-    
-    UIImageView *adimgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, adbannerview.frame.size.width, adbannerview.frame.size.height)];
-    UIImage *adimg = [UIImage imageNamed:@"ad.jpg"];
-    adimgview.contentMode = UIViewContentModeScaleAspectFill;
-    [adimgview setImage:adimg];
-    [adbannerview addSubview:adimgview];
-    
     //end of the advirew banner panel
     
     //login panel for the member's only
@@ -581,6 +588,35 @@
     [bottomview addSubview:newtitle];
     [bottomview addSubview:subtitle];
     [productpanelview addSubview:bottomview];
+}
+-(void)ad_panelview {
+    NSLog(@"ad img %@", [adtarget objectAtIndex:2]);
+    [standardUsers setObject:[[adpayload objectAtIndex:2] objectForKey:@"product_description"] forKey:@"shop_front_description"];
+    [standardUsers setObject:[[adpayload objectAtIndex:2] objectForKey:@"product_name"] forKey:@"shop_front_name"];
+    [standardUsers setObject:[adimgurl objectAtIndex:2] forKey:@"shop_front_img"];
+    [standardUsers setObject:[adtarget objectAtIndex:2] forKey:@"shop_front_id"];
+    UIImageView *welcomeview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, topview.frame.size.width, topview.frame.size.height)];
+    [welcomeview sd_setImageWithURL:[NSURL URLWithString:adimgurl[0]] placeholderImage:[UIImage imageNamed:@"welcome.jpg"]];
+    //UIImage *welcomeimage = [UIImage imageNamed:@"welcome.jpg"];
+    welcomeview.contentMode = UIViewContentModeScaleAspectFill;
+    //[welcomeview setImage:welcomeimage];
+    
+    UIButton *ad1clickbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    ad1clickbutton.frame = CGRectMake(0, 0, topview.frame.size.width, topview.frame.size.height);
+    [ad1clickbutton setTitle:@"" forState:UIControlStateNormal];
+    [ad1clickbutton addTarget:self action:@selector(QMethod:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [topview addSubview:welcomeview];
+    [topview addSubview:ad1clickbutton];
+    //adview banner only for the ad
+    
+    UIImageView *adimgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, adbannerview.frame.size.width, adbannerview.frame.size.height)];
+    [adimgview sd_setImageWithURL:[NSURL URLWithString:adimgurl[1]] placeholderImage:[UIImage imageNamed:@"ad.jpg"]];
+    adimgview.clipsToBounds = YES;
+    //UIImage *adimg = [UIImage imageNamed:@"ad.jpg"];
+    adimgview.contentMode = UIViewContentModeScaleAspectFill;
+    //[adimgview setImage:adimg];
+    [adbannerview addSubview:adimgview];
 }
 -(void)cr_productpanelview {
     UIView *bottomview = [[UIView alloc] initWithFrame:CGRectMake(0, productpanelview_2.frame.size.height-53, productpanelview_2.frame.size.width, 53)];

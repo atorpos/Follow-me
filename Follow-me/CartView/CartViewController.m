@@ -12,12 +12,14 @@
 #import "SBJson.h"
 #import "SuccessViewController.h"
 #import "CheckoutViewController.h"
+#import "CNPPopupController.h"
 
-@interface CartViewController () <STPPaymentCardTextFieldDelegate>
+@interface CartViewController () <STPPaymentCardTextFieldDelegate, CNPPopupControllerDelegate>
 
 @property PKPaymentRequest *payment_request;
 @property PKPaymentMethod *payment_method;
 @property PKShippingMethod *select_shipping_method;
+@property (nonatomic, strong) CNPPopupController *popupController;
 
 @end
 
@@ -42,7 +44,7 @@
     checkoutbutton.frame = CGRectMake(10, 40, curwidth/2-15, 40);
     [checkoutbutton setTitle:@"結賬" forState:UIControlStateNormal];
     applepaybutton.frame = CGRectMake(curwidth/2+5, 40, curwidth/2-15, 40);
-    [applepaybutton setTitle:@"Pay with ApplePay" forState:UIControlStateNormal];
+    [applepaybutton setTitle:@"" forState:UIControlStateNormal];
     applepaybutton.contentHorizontalAlignment = UIControlContentVerticalAlignmentCenter;
     //applepay button
     applepaybutton.enabled = [Stripe deviceSupportsApplePay];
@@ -186,9 +188,10 @@
     itemname.numberOfLines = 2;
     itemname.adjustsFontSizeToFitWidth = YES;
     itemname.text = [NSString stringWithFormat:@"%@", [cartdescription objectAtIndex:indexPath.row]];
+    itemname.font = [UIFont systemFontOfSize:15];
     UILabel *itemsubname = [[UILabel alloc] initWithFrame:CGRectMake(curwidth/4, 47, curwidth/4*3, 20)];
     itemsubname.numberOfLines =1;
-    itemsubname.font = [UIFont systemFontOfSize:9];
+    itemsubname.font = [UIFont systemFontOfSize:11];
     
     itemsubname.text = [NSString stringWithFormat:@"數量: %@ | 港幣$ %.2f", [cartqty objectAtIndex:indexPath.row], [[cartprice objectAtIndex:indexPath.row] doubleValue]];
     UILabel *itemsubtotal = [[UILabel alloc] initWithFrame:CGRectMake(curwidth/3*2, 90, curwidth/3-5, 30)];
@@ -231,9 +234,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableview deselectRowAtIndexPath:indexPath animated:NO];
+    productname = [cartdescription objectAtIndex:indexPath.row];
+    productquantity = [cartqty objectAtIndex:indexPath.row];
+    chooseindex = indexPath.row;
+    [self shownumber:CNPPopupStyleFullscreen];
 }
 
 #pragma mark PKPaymentAuthorizationViewControllerDelegate
+//need to update it.
+
 -(void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion {
     NSLog(@"start authoride");
     
@@ -401,5 +410,145 @@
     checkview.itemimg = cartimgdata;
     [self.navigationController pushViewController:checkview animated:YES];
 }
-
+-(void)shownumber:(CNPPopupStyle)popupStyle {
+    
+    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    NSLog(@"index %ld", (long)chooseindex);
+    //NSAttributedString *title = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", productname] attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:24], NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    
+    UIView *topview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, 40)];
+    topview.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, 39.0f, topview.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.8].CGColor;
+    [topview.layer addSublayer:bottomBorder];
+    
+    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [button setTitle:@"x" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.8];
+    button.layer.cornerRadius = 0;
+    button.selectionHandler = ^(CNPPopupButton *button){
+        [self.popupController dismissPopupControllerAnimated:YES];
+        NSLog(@"Block for button: %@", button.titleLabel.text);
+    };
+    
+    CNPPopupButton *savebutton = [[CNPPopupButton alloc] initWithFrame:CGRectMake(curwidth-80, 0, 80, 40)];
+    [savebutton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    savebutton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [savebutton setTitle:@"更新" forState:UIControlStateNormal];
+    savebutton.backgroundColor = [UIColor colorWithRed:0.13 green:0.47 blue:0.80 alpha:0.8];
+    savebutton.layer.cornerRadius = 0;
+    savebutton.selectionHandler = ^(CNPPopupButton *savebutton){
+        
+        NSString *singleprice = [self->cartprice objectAtIndex:self->chooseindex];
+        double newprice = [singleprice doubleValue] * [self->productquantity doubleValue];
+        NSLog(@"new price %f", newprice);
+        [self->cartqty replaceObjectAtIndex:self->chooseindex withObject:self->productquantity];
+        [self->defaults setObject:self->cartqty forKey:@"chooseitemno"];
+        [self.popupController dismissPopupControllerAnimated:YES];
+        [self reloaddata];
+        [self->tableview reloadData];
+        NSLog(@"Block for button: %@", savebutton.titleLabel.text);
+    };
+    
+    quantityfield = [[UITextField alloc] initWithFrame:CGRectMake(70, 20, curwidth-140, 40)];
+    quantityfield.userInteractionEnabled = NO;
+    quantityfield.backgroundColor = [UIColor whiteColor];
+    quantityfield.text = productquantity;
+    quantityfield.textAlignment = NSTextAlignmentCenter;
+    quantityfield.layer.borderWidth = 1;
+    quantityfield.layer.cornerRadius = 0;
+    quantityfield.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.frame = CGRectMake(40, 0, curwidth-120, 40);
+    titleLabel.numberOfLines = 0;
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.text = [NSString stringWithFormat:@"%@", productname];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.clipsToBounds = YES;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    UIButton *addbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addbutton setTitle:@"+" forState:UIControlStateNormal];
+    [addbutton setTitleColor:[UIColor colorWithRed:0.16 green:0.55 blue:0.96 alpha:1] forState:UIControlStateNormal];
+    addbutton.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+    addbutton.frame = CGRectMake(curwidth-70, 20, 60, 40);
+    addbutton.layer.borderWidth = 1;
+    addbutton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [addbutton addTarget:self action:@selector(addquantity) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *minbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [minbutton setTitle:@"-" forState:UIControlStateNormal];
+    [minbutton setTitleColor:[UIColor colorWithRed:0.16 green:0.55 blue:0.96 alpha:1] forState:UIControlStateNormal];
+    minbutton.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+    minbutton.frame = CGRectMake(10, 20, 60, 40);
+    minbutton.layer.borderWidth = 1;
+    minbutton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [minbutton addTarget:self action:@selector(reducequantity) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *deletebutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [deletebutton setTitle:@"移除產品" forState:UIControlStateNormal];
+    [deletebutton setTitleColor:[UIColor colorWithRed:0.16 green:0.55 blue:0.96 alpha:1] forState:UIControlStateNormal];
+    deletebutton.frame = CGRectMake(10, 80, curwidth-20, 40);
+    deletebutton.layer.borderWidth = 1;
+    deletebutton.layer.cornerRadius = 4;
+    deletebutton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [deletebutton addTarget:self action:@selector(removepop) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *buttonview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, 80)];
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, curwidth, curwidth)];
+    customView.backgroundColor = [UIColor whiteColor];
+    
+    [customView addSubview:quantityfield];
+    [customView addSubview:addbutton];
+    [customView addSubview:minbutton];
+    [customView addSubview:deletebutton];
+    [topview addSubview:button];
+    [topview addSubview:titleLabel];
+    [topview addSubview:savebutton];
+    
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[topview, customView, buttonview]];
+    self.popupController.theme = [CNPPopupTheme defaultTheme];
+    self.popupController.theme.popupStyle = popupStyle;
+    self.popupController.delegate = self;
+    [self.popupController presentPopupControllerAnimated:YES];
+    
+}
+-(void)addquantity {
+    NSLog(@"add quantity");
+    tempquantity = [productquantity intValue] + 1;
+    productquantity = [NSString stringWithFormat:@"%d", tempquantity];
+    [quantityfield setText:productquantity];
+    [quantityfield setNeedsDisplay];
+}
+-(void)reducequantity {
+    NSLog(@"reduce quantity");
+    if ([productquantity intValue]>0){
+        tempquantity = [productquantity intValue] - 1;
+    }
+    productquantity = [NSString stringWithFormat:@"%d", tempquantity];
+    [quantityfield setText:productquantity];
+    [quantityfield setNeedsDisplay];
+}
+-(void)removepop {
+    NSLog(@"remove pop");
+    [cartitem removeObjectAtIndex:chooseindex];
+    [cartqty removeObjectAtIndex:chooseindex];
+    [cartimgdata removeObjectAtIndex:chooseindex];
+    [cartdescription removeObjectAtIndex:chooseindex];
+    [cartprice removeObjectAtIndex:chooseindex];
+    [defaults setObject:cartitem forKey:@"chooseitemid"];
+    [defaults setObject:cartqty forKey:@"chooseitemno"];
+    [defaults setObject:cartimgdata forKey:@"choseitemimg"];
+    [defaults setObject:cartdescription forKey:@"choseitemtitle"];
+    [defaults setObject:cartprice forKey:@"chooseitemprice"];
+    [self reloaddata];
+    [self.popupController dismissPopupControllerAnimated:YES];
+}
 @end
