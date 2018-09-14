@@ -29,6 +29,7 @@
     NSString * language = [[NSLocale preferredLanguages] firstObject];
     //[self registerForRemoteNotifications]; //for the remote notification
     //
+    NSString *appversion =  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
@@ -45,6 +46,15 @@
     
     standarddefs = [NSUserDefaults standardUserDefaults];
     [standarddefs setObject:language forKey:@"systemlanguage"];
+    
+    
+    if(![appversion isEqualToString:[standarddefs objectForKey:@"appversion"]] || ![standarddefs objectForKey:@"appversion"]) {
+        NSLog(@"new version");
+        [self cleanshoppingcart];
+        [standarddefs setObject:appversion forKey:@"appversion"];
+    }else {
+        NSLog(@"same version");
+    }
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     //initial_url = @"https://d3q3ok4iuja3c0.cloudfront.net/payload/initial_json.json";
@@ -102,6 +112,20 @@
     }
 }
 */
+-(void)cleanshoppingcart {
+    /*
+     [defaults objectForKey:@"chooseitemid"]];
+     cartqty = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:@"chooseitemno"]];
+     cartimgdata = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:@"choseitemimg"]];
+     cartdescription = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:@"choseitemtitle"]];
+     cartprice = [[NSMutableArray alloc] initWithArray:[defaults objectForKey:@"chooseitemprice"]];
+     */
+    [standarddefs removeObjectForKey:@"chooseitemno"];
+    [standarddefs removeObjectForKey:@"choseitemimg"];
+    [standarddefs removeObjectForKey:@"chooseitemid"];
+    [standarddefs removeObjectForKey:@"choseitemtitle"];
+    [standarddefs removeObjectForKey:@"chooseitemprice"];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
