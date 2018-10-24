@@ -14,6 +14,7 @@
     IBOutlet UITableView *maintableview;
     CGFloat curwidth;
     CGFloat curheigh;
+    CGFloat optionareaheight;
     IBOutlet UIButton *buybutton;
     IBOutlet UIBarButtonItem *buynow;
     NSUserDefaults *defaults;
@@ -35,6 +36,11 @@
     UIView *addview;
     NSData *imagdata;
     UIScrollView *heroimgview;
+    NSDictionary *productvariations;
+    UIView *variationsbuttonview;
+    NSString *var_sku;
+    UIView *buttonview;
+    BOOL havevariation;
     ProductDetailWebViewController *productdetailwebview;
 }
 
