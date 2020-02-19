@@ -132,7 +132,7 @@
     }
 }
 -(void)applePaytapped {
-    paymentRequest = [Stripe paymentRequestWithMerchantIdentifier:@"merchant.pro.followmw.www" country:@"HK" currency:@"HKD"];
+    paymentRequest = [Stripe paymentRequestWithMerchantIdentifier:@"" country:@"HK" currency:@"HKD"];
     paymentRequest.paymentSummaryItems = @[
                                            [PKPaymentSummaryItem summaryItemWithLabel:@"單價" amount:[NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%.2f", invtotal] locale:nil]]
                                            ];
@@ -251,7 +251,7 @@
         if(token) {
             NSLog(@"yes token %@", token);
             NSLog(@"token %@", payment.shippingContact.postalAddress);
-            NSString *stripeAPI = @"sk_live_l2DDUGECfaw9i4hTmZ36ydyQ"; //testapi sk_test_lDL5DW1w3bn10dusvalBBz4D, public api sk_live_l2DDUGECfaw9i4hTmZ36ydyQ
+            NSString *stripeAPI = @""; //public api
             NSString *float2 = [NSString stringWithFormat:@"%.2f", self->invtotal];
             NSString *chargevalue = [float2 stringByReplacingOccurrencesOfString:@"." withString:@""];
             NSString *poststring = [NSString stringWithFormat:@"stripeToken=%@&paymentamount=%@&paymentcurrency=hkd&stripeAPI=%@&email=%@&pnumber=%@&shipstreet=%@&shipcity=%@&shipstate=%@&shippostal=%@&shipcountry=%@&firstname=%@&lastname=%@&transdetail=%@&cartdisc=%.2f&combincost=%@&combinqty=%@",token, chargevalue, stripeAPI, payment.shippingContact.emailAddress, [payment.shippingContact.phoneNumber valueForKey:@"digits"], payment.shippingContact.postalAddress.street,payment.shippingContact.postalAddress.city,payment.shippingContact.postalAddress.state,payment.shippingContact.postalAddress.postalCode,payment.shippingContact.postalAddress.country,payment.shippingContact.name.givenName,payment.shippingContact.name.familyName,self->combinatedid,self->discount,self->combinatecost,self->combinateqty];
