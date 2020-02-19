@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
+#import "Firebase.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+@import FirebaseCore;
+@import FirebaseAnalytics;
+@import FirebaseInstanceID;
+@import FirebaseMessaging;
+@interface AppDelegate : UIResponder <UIApplicationDelegate, FIRMessagingDelegate> {
     NSString *initial_url;
     NSUserDefaults *standarddefs;
     NSDictionary *json;
